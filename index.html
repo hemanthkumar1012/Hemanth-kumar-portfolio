@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V. Hemanth Kumar — Portfolio</title>
+<style>
+  :root{
+    --bg:#f5f5f7;
+    --bg2:#ffffff;
+    --ink:#1d1d1f;
+    --dim:#6e6e73;
+    --blue:#0071e3;
+    --blue-d:#0059b3;
+    --line:rgba(0,0,0,.08);
+    --glass:rgba(255,255,255,.72);
+    --sans:-apple-system,BlinkMacSystemFont,'Inter','Helvetica Neue',Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  a{color:var(--blue);text-decoration:none}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+  button{font-family:var(--sans);cursor:pointer;background:none;border:none;color:inherit}
+
+  /* ---- floating glass nav ---- */
+  nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:100;
+      background:var(--glass);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);
+      border:1px solid var(--line);border-radius:980px;box-shadow:0 8px 30px rgba(0,0,0,.08);
+      padding:8px 8px;transition:padding .3s ease,box-shadow .3s ease}
+  nav.scrolled{padding:6px 6px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+  .nav-inner{display:flex;align-items:center;gap:2px}
+  .nav-brand{font-weight:600;font-size:14px;padding:0 14px 0 10px;color:var(--ink);white-space:nowrap}
+  .nav-links{display:flex;gap:2px}
+  .nav-links button{font-size:13px;color:var(--dim);padding:9px 14px;border-radius:980px;transition:.2s;font-weight:500}
+  .nav-links button:hover{color:var(--ink);background:rgba(0,0,0,.04)}
+  .nav-links button.active{color:#fff;background:var(--ink)}
+  .nav-toggle{display:none}
+
+  /* ---- floating gradient blobs ---- */
+  .blobs{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+  .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;will-change:transform}
+  .blob1{width:520px;height:520px;background:radial-gradient(circle,#7dd3fc,transparent 70%);top:-160px;left:-120px}
+  .blob2{width:460px;height:460px;background:radial-gradient(circle,#c4b5fd,transparent 70%);top:60px;right:-160px}
+  .blob3{width:400px;height:400px;background:radial-gradient(circle,#fbcfe8,transparent 70%);top:900px;left:40%}
+
+  main{position:relative;z-index:1}
+
+  /* ---- hero ---- */
+  header.hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 60px}
+  .eyebrow{font-size:15px;color:var(--blue);font-weight:600;opacity:0;animation:fadeUp .7s ease .1s forwards}
+  h1{font-size:clamp(42px,8vw,88px);font-weight:700;letter-spacing:-2.5px;margin:6px 0 4px;
+     background:linear-gradient(180deg,#1d1d1f 40%,#4b4b4d);-webkit-background-clip:text;background-clip:text;color:transparent;
+     opacity:0;animation:fadeUp .8s ease .2s forwards}
+  .role{font-size:clamp(20px,3vw,28px);color:var(--dim);font-weight:500;opacity:0;animation:fadeUp .8s ease .3s forwards}
+  .tagline{max-width:56ch;color:var(--dim);margin-top:20px;font-size:17px;opacity:0;animation:fadeUp .8s ease .4s forwards}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+  .cta-row{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;opacity:0;animation:fadeUp .8s ease .5s forwards}
+  .btn{font-size:15px;font-weight:500;padding:13px 26px;border-radius:980px;transition:.25s cubic-bezier(.2,.8,.2,1)}
+  .btn.primary{background:var(--blue);color:#fff}
+  .btn.primary:hover{background:var(--blue-d);transform:translateY(-2px) scale(1.02);box-shadow:0 10px 24px rgba(0,113,227,.35)}
+  .btn.ghost{background:var(--bg2);color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 10px 24px rgba(0,0,0,.08)}
+
+  .scroll-hint{margin-top:70px;color:var(--dim);font-size:12px;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp .8s ease .6s forwards}
+  .scroll-hint .chevron{width:9px;height:9px;border-right:2px solid var(--dim);border-bottom:2px solid var(--dim);transform:rotate(45deg);animation:bounce 1.8s ease-in-out infinite}
+  @keyframes bounce{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(4px,4px)}}
+
+  /* ---- sections ---- */
+  section{padding:120px 0}
+  .section-head{text-align:center;margin-bottom:56px}
+  .kicker{font-size:13px;font-weight:600;color:var(--blue);letter-spacing:.5px;text-transform:uppercase}
+  .section-title{font-size:clamp(30px,5vw,44px);font-weight:700;letter-spacing:-1px;margin-top:8px}
+
+  .reveal{opacity:0;transform:translateY(36px) scale(.97);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:translateY(0) scale(1)}
+
+  /* ---- skills floating pills ---- */
+  .skills{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:760px;margin:0 auto}
+  .chip{background:var(--bg2);border:1px solid var(--line);color:var(--ink);font-size:14px;font-weight:500;
+        padding:10px 20px;border-radius:980px;box-shadow:0 2px 10px rgba(0,0,0,.04);transition:.25s cubic-bezier(.2,.8,.2,1)}
+  .chip:hover{transform:translateY(-4px);box-shadow:0 14px 26px rgba(0,0,0,.1);border-color:transparent}
+
+  /* ---- floating cards ---- */
+  .card{background:var(--bg2);border:1px solid var(--line);border-radius:24px;padding:36px;margin-bottom:24px;
+        box-shadow:0 4px 24px rgba(0,0,0,.05);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+  .card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(0,0,0,.1)}
+  .card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;cursor:pointer}
+  .card h3{font-size:22px;font-weight:600}
+  .meta{color:var(--blue);font-size:13px;font-weight:600;margin-top:6px}
+  .toggle-btn{font-size:13px;font-weight:600;color:var(--blue);white-space:nowrap;padding:8px 16px;border-radius:980px;background:rgba(0,113,227,.08)}
+  .toggle-btn:hover{background:rgba(0,113,227,.15)}
+  .card-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.2,.8,.2,1)}
+  .card-body.open{max-height:500px}
+  .card ul{padding:18px 0 0 20px;color:var(--dim);font-size:15px}
+  .card li{margin-bottom:8px}
+  .stack{font-size:13px;color:var(--ink);font-weight:600;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+
+  /* ---- timeline cards ---- */
+  .timeline{max-width:760px;margin:0 auto}
+  .tl-item{display:grid;grid-template-columns:140px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--line)}
+  .tl-item:last-child{border-bottom:none}
+  .tl-item .yr{font-size:13px;font-weight:600;color:var(--dim);padding-top:2px}
+  .tl-item h3{font-size:17px;font-weight:600}
+  .tl-item p{color:var(--dim);font-size:14px;margin-top:4px}
+
+  /* ---- contact / closing ---- */
+  .contact-card{max-width:760px;margin:0 auto;text-align:center;background:linear-gradient(160deg,#eef4ff,#f7ecff);
+                border-radius:32px;padding:72px 40px;border:1px solid var(--line)}
+  .contact-card h2{font-size:clamp(28px,4vw,40px);font-weight:700;letter-spacing:-1px}
+  .contact-card p{color:var(--dim);margin-top:14px;font-size:16px}
+  .contact-card .cta-row{margin-top:30px}
+
+  footer{padding:48px 24px;text-align:center;color:var(--dim);font-size:13px}
+
+  #toTop{position:fixed;bottom:28px;right:28px;z-index:90;width:44px;height:44px;border-radius:50%;
+         background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--line);color:var(--ink);
+         box-shadow:0 8px 24px rgba(0,0,0,.1);opacity:0;pointer-events:none;transition:.3s;font-size:16px}
+  #toTop.show{opacity:1;pointer-events:auto}
+  #toTop:hover{transform:translateY(-3px)}
+
+  @media(max-width:760px){
+    nav{left:16px;right:16px;transform:none;width:auto}
+    .nav-inner{justify-content:space-between}
+    .nav-links{position:fixed;top:70px;left:16px;right:16px;background:var(--glass);backdrop-filter:blur(20px);
+               border:1px solid var(--line);border-radius:20px;flex-direction:column;padding:8px;display:none;gap:2px}
+    .nav-links.open{display:flex}
+    .nav-links button{text-align:left}
+    .nav-toggle{display:block;font-size:18px;padding:8px 14px}
+    .tl-item{grid-template-columns:1fr}
+    section{padding:80px 0}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  }
+</style>
+</head>
+<body>
+<div class="blobs"><div class="blob blob1" id="b1"></div><div class="blob blob2" id="b2"></div><div class="blob blob3" id="b3"></div></div>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">VHK</span>
+    <div class="nav-links" id="navLinks"></div>
+    <button class="nav-toggle" id="navToggle">☰</button>
+  </div>
+</nav>
+
+<main id="app"></main>
+<button id="toTop" aria-label="Back to top">↑</button>
+
+<script>
+const data = {
+  name: "V. Hemanth Kumar",
+  role: "CS Engineering Student — Full Stack & Data",
+  location: "Punganur, Andhra Pradesh",
+  tagline: "Building real-world applications while learning the tools that power them. Currently deep in Spring Boot, React, and everything in between.",
+  contact: {
+    email: "hemanthkumaryadav13@gmail.com",
+    phone: "+91 7075979460",
+    linkedin: "https://www.linkedin.com/in/v-hemanth-kumar-yadav/",
+    github: "https://github.com/hemanthkumar1012"
+  },
+  skills: ["Python","JavaScript","SQL","HTML5","CSS3","React.js","Node.js","Express.js","MySQL","MongoDB","Git","Linux","DSA"],
+  projects: [
+    {
+      title: "Cricket Tournament Management System",
+      status: "Ongoing",
+      desc: [
+        "Full-stack app to manage tournaments, teams, players, matches, schedules, and points tables.",
+        "Layered Spring Boot backend: Controller, Service, Repository, Entity.",
+        "REST APIs for teams, players, matches, and scores via Spring Data JPA + MySQL.",
+        "Responsive React.js frontend with live standings and automatic points calculation."
+      ],
+      stack: "Java · Spring Boot · Hibernate · MySQL · React.js · REST APIs · Maven"
+    }
+  ],
+  experience: [
+    { yr: "Jun–Nov 2023", title: "Industrial Trainee — Electrical Maintenance", org: "Tirumala Milk Products Pvt. Ltd. (Lactalis Group)",
+      desc: "Supported preventive & breakdown maintenance of electrical equipment for continuous plant operations." }
+  ],
+  education: [
+    { yr: "2024–2027", title: "B.Tech, Computer Science Engineering", org: "Sri Venkateswara University College of Engineering — Currently Pursuing" },
+    { yr: "2021–2024", title: "Diploma, Electrical & Electronics Engineering", org: "Sri Venkateswara Govt. Polytechnic, Tirupati — 73.39%" }
+  ],
+  certifications: ["CCBP 4.0 Full Stack Development — NXTWave (Expected 2027)"],
+  sections: [
+    {id:"about",label:"About"},{id:"skills",label:"Skills"},{id:"projects",label:"Projects"},
+    {id:"experience",label:"Experience"},{id:"education",label:"Education"},{id:"contact",label:"Contact"}
+  ]
+};
+
+const el = (tag, cls, html) => { const e = document.createElement(tag); if(cls) e.className = cls; if(html!==undefined) e.innerHTML = html; return e; };
+
+function render(d){
+  const app = document.getElementById('app');
+
+  document.getElementById('navLinks').innerHTML =
+    d.sections.map(s=>`<button data-target="${s.id}">${s.label}</button>`).join('');
+
+  const header = el('header','hero');
+  header.id = 'about';
+  header.innerHTML = `
+    <div class="eyebrow">Portfolio</div>
+    <h1>${d.name}</h1>
+    <div class="role">${d.role}</div>
+    <p class="tagline">${d.tagline}</p>
+    <div class="cta-row">
+      <a class="btn primary" href="mailto:${d.contact.email}">Get in touch</a>
+      <button class="btn ghost" data-target="projects">View work</button>
+    </div>
+    <div class="scroll-hint">Scroll<span class="chevron"></span></div>`;
+  app.appendChild(header);
+
+  const skillsSec = el('section','reveal');
+  skillsSec.id = 'skills';
+  skillsSec.innerHTML = `<div class="wrap">
+    <div class="section-head"><div class="kicker">Toolkit</div><div class="section-title">Skills</div></div>
+    <div class="skills">${d.skills.map(s=>`<span class="chip">${s}</span>`).join('')}</div></div>`;
+  app.appendChild(skillsSec);
+
+  const projSec = el('section','reveal');
+  projSec.id = 'projects';
+  projSec.innerHTML = `<div class="wrap">
+    <div class="section-head"><div class="kicker">Selected work</div><div class="section-title">Projects</div></div>
+    ${d.projects.map((p,i)=>`
+      <div class="card">
+        <div class="card-head" data-toggle="proj-${i}">
+          <div><h3>${p.title}</h3><div class="meta">${p.status}</div></div>
+          <button class="toggle-btn" id="btn-proj-${i}">View details</button>
+        </div>
+        <div class="card-body" id="proj-${i}">
+          <ul>${p.desc.map(x=>`<li>${x}</li>`).join('')}</ul>
+          <div class="stack">${p.stack}</div>
+        </div>
+      </div>`).join('')}
+    </div>`;
+  app.appendChild(projSec);
+
+  const expSec = el('section','reveal');
+  expSec.id = 'experience';
+  expSec.innerHTML = `<div class="wrap">
+    <div class="section-head"><div class="kicker">Hands-on</div><div class="section-title">Experience</div></div>
+    <div class="timeline">${d.experience.map(e=>`
+      <div class="tl-item">
+        <div class="yr">${e.yr}</div>
+        <div><h3>${e.title}</h3><p>${e.org}</p><p>${e.desc}</p></div>
+      </div>`).join('')}</div></div>`;
+  app.appendChild(expSec);
+
+  const eduSec = el('section','reveal');
+  eduSec.id = 'education';
+  eduSec.innerHTML = `<div class="wrap">
+    <div class="section-head"><div class="kicker">Background</div><div class="section-title">Education</div></div>
+    <div class="timeline">${d.education.map(e=>`
+      <div class="tl-item">
+        <div class="yr">${e.yr}</div>
+        <div><h3>${e.title}</h3><p>${e.org}</p></div>
+      </div>`).join('')}
+      <div class="tl-item">
+        <div class="yr">Certification</div>
+        <div>${d.certifications.map(c=>`<h3 style="font-size:15px">${c}</h3>`).join('')}</div>
+      </div>
+    </div></div>`;
+  app.appendChild(eduSec);
+
+  const contactSec = el('section','reveal');
+  contactSec.id = 'contact';
+  contactSec.innerHTML = `<div class="wrap">
+    <div class="contact-card">
+      <h2>Let's build something.</h2>
+      <p>Open to internships and full-stack opportunities — reach out any time.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="mailto:${d.contact.email}">${d.contact.email}</a>
+        <a class="btn ghost" href="tel:${d.contact.phone}">${d.contact.phone}</a>
+      </div>
+      <div class="cta-row" style="margin-top:14px">
+        <a class="btn ghost" href="${d.contact.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="btn ghost" href="${d.contact.github}" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div></div>`;
+  app.appendChild(contactSec);
+
+  const foot = el('footer','', `${d.location} · built with HTML, CSS &amp; JavaScript`);
+  app.appendChild(foot);
+}
+
+render(data);
+
+// nav: smooth scroll + active state (works for both nav buttons and the hero "View work" button)
+document.querySelectorAll('[data-target]').forEach(b=>b.addEventListener('click',()=>{
+  const t = document.getElementById(b.dataset.target);
+  if(t) t.scrollIntoView({behavior:'smooth'});
+  document.getElementById('navLinks').classList.remove('open');
+}));
+
+const navBtns = [...document.querySelectorAll('.nav-links button')];
+const sections = data.sections.map(s=>document.getElementById(s.id));
+const setActive = () => {
+  let current = sections[0].id;
+  for(const s of sections){ if(window.scrollY >= s.offsetTop - 160) current = s.id; }
+  navBtns.forEach(b=>b.classList.toggle('active', b.dataset.target === current));
+};
+
+document.getElementById('navToggle').addEventListener('click', ()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+document.querySelectorAll('[data-toggle]').forEach(head=>{
+  head.addEventListener('click', ()=>{
+    const body = document.getElementById(head.dataset.toggle);
+    const btn = document.getElementById('btn-'+head.dataset.toggle);
+    const open = body.classList.toggle('open');
+    btn.textContent = open ? 'Hide details' : 'View details';
+  });
+});
+
+const nav = document.getElementById('nav');
+const toTop = document.getElementById('toTop');
+const b1 = document.getElementById('b1'), b2 = document.getElementById('b2'), b3 = document.getElementById('b3');
+window.addEventListener('scroll', ()=>{
+  const y = window.scrollY;
+  nav.classList.toggle('scrolled', y > 20);
+  toTop.classList.toggle('show', y > 500);
+  setActive();
+  b1.style.transform = `translateY(${y*0.15}px)`;
+  b2.style.transform = `translateY(${y*0.1}px)`;
+  b3.style.transform = `translateY(${-y*0.08}px)`;
+});
+toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+setActive();
+</script>
+</body>
+</html>
