@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>V. Hemanth Kumar — Portfolio</title>
+<meta name="description" content="Portfolio of V. Hemanth Kumar, a Computer Science Engineering student (B.Tech, 2027) interested in Full Stack Development, Artificial Intelligence, Data Analytics, and Product Management.">
+<meta name="author" content="V. Hemanth Kumar">
+<meta property="og:title" content="V. Hemanth Kumar — Portfolio">
+<meta property="og:description" content="Computer Science Engineering student exploring Full Stack Development, AI, Data Analytics, and Product Management.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f5f5f7">
 <style>
   :root{
     --bg:#f5f5f7;
@@ -76,8 +82,17 @@
   .reveal{opacity:0;transform:translateY(36px) scale(.97);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
   .reveal.in{opacity:1;transform:translateY(0) scale(1)}
 
+  /* ---- about ---- */
+  .about-text{max-width:680px;margin:0 auto;text-align:center;color:var(--dim);font-size:17px}
+  .about-text p{margin-bottom:16px}
+  .about-text p:last-child{margin-bottom:0}
+  .about-text strong{color:var(--ink);font-weight:600}
+
   /* ---- skills floating pills ---- */
-  .skills{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:760px;margin:0 auto}
+  .skills-groups{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:30px}
+  .skill-group{text-align:left}
+  .skill-cat{font-size:13px;font-weight:600;color:var(--dim);letter-spacing:.5px;text-transform:uppercase;margin-bottom:14px}
+  .skills{display:flex;flex-wrap:wrap;gap:12px}
   .chip{background:var(--bg2);border:1px solid var(--line);color:var(--ink);font-size:14px;font-weight:500;
         padding:10px 20px;border-radius:980px;box-shadow:0 2px 10px rgba(0,0,0,.04);transition:.25s cubic-bezier(.2,.8,.2,1)}
   .chip:hover{transform:translateY(-4px);box-shadow:0 14px 26px rgba(0,0,0,.1);border-color:transparent}
@@ -86,10 +101,11 @@
   .card{background:var(--bg2);border:1px solid var(--line);border-radius:24px;padding:36px;margin-bottom:24px;
         box-shadow:0 4px 24px rgba(0,0,0,.05);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
   .card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(0,0,0,.1)}
-  .card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;cursor:pointer}
+  .card-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:16px;cursor:pointer}
   .card h3{font-size:22px;font-weight:600}
   .meta{color:var(--blue);font-size:13px;font-weight:600;margin-top:6px}
-  .toggle-btn{font-size:13px;font-weight:600;color:var(--blue);white-space:nowrap;padding:8px 16px;border-radius:980px;background:rgba(0,113,227,.08)}
+  .card-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .toggle-btn{display:inline-block;font-size:13px;font-weight:600;color:var(--blue);white-space:nowrap;padding:8px 16px;border-radius:980px;background:rgba(0,113,227,.08)}
   .toggle-btn:hover{background:rgba(0,113,227,.15)}
   .card-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.2,.8,.2,1)}
   .card-body.open{max-height:500px}
@@ -130,6 +146,7 @@
     .nav-toggle{display:block;font-size:18px;padding:8px 14px}
     .tl-item{grid-template-columns:1fr}
     section{padding:80px 0}
+    .card-actions{justify-content:flex-start;width:100%}
   }
   @media(prefers-reduced-motion:reduce){
     *{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -139,11 +156,11 @@
 <body>
 <div class="blobs"><div class="blob blob1" id="b1"></div><div class="blob blob2" id="b2"></div><div class="blob blob3" id="b3"></div></div>
 
-<nav id="nav">
+<nav id="nav" aria-label="Primary navigation">
   <div class="nav-inner">
     <span class="nav-brand">VHK</span>
     <div class="nav-links" id="navLinks"></div>
-    <button class="nav-toggle" id="navToggle">☰</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">☰</button>
   </div>
 </nav>
 
@@ -153,32 +170,57 @@
 <script>
 const data = {
   name: "V. Hemanth Kumar",
-  role: "CS Engineering Student — Full Stack & Data",
+  role: "Computer Science Engineering Student",
   location: "Punganur, Andhra Pradesh",
-  tagline: "Building real-world applications while learning the tools that power them. Currently deep in Spring Boot, React, and everything in between.",
+  tagline: "Graduating in 2027, with a focus on Full Stack Development, Artificial Intelligence, Data Analytics, and Product Management. I enjoy building practical, real-world applications and continuously learning new technologies.",
+  about: [
+    "I'm a Computer Science Engineering student at Sri Venkateswara University College of Engineering, graduating in 2027. I'm drawn to <strong>Full Stack Development</strong>, <strong>Artificial Intelligence</strong>, <strong>Data Analytics</strong>, and <strong>Product Management</strong> — and I enjoy the process of turning an idea into working software.",
+    "Alongside my coursework, I'm building hands-on skills in software engineering through self-directed projects and continuous learning — from full-stack web applications to exploring how data and AI can be applied to real problems."
+  ],
   contact: {
     email: "hemanthkumaryadav13@gmail.com",
     phone: "+91 7075979460",
     linkedin: "https://www.linkedin.com/in/v-hemanth-kumar-yadav/",
     github: "https://github.com/hemanthkumar1012"
   },
-  skills: ["Python","JavaScript","SQL","HTML5","CSS3","React.js","Node.js","Express.js","MySQL","MongoDB","Git","Linux","DSA"],
+  skills: [
+    { category: "Languages", items: ["Java","Python","JavaScript","C","SQL"] },
+    { category: "Frontend", items: ["HTML5","CSS3","React.js"] },
+    { category: "Backend", items: ["Spring Boot","Node.js","Express.js","REST APIs"] },
+    { category: "Databases", items: ["MySQL","MongoDB"] },
+    { category: "Tools", items: ["Git","GitHub","Linux","Maven"] },
+    { category: "Other", items: ["Data Analytics","DSA"] }
+  ],
   projects: [
     {
       title: "Cricket Tournament Management System",
-      status: "Ongoing",
+      status: "In Development",
+      github: "https://github.com/hemanthkumar1012/Cricket-Tournament-Management-System",
       desc: [
-        "Full-stack app to manage tournaments, teams, players, matches, schedules, and points tables.",
-        "Layered Spring Boot backend: Controller, Service, Repository, Entity.",
-        "REST APIs for teams, players, matches, and scores via Spring Data JPA + MySQL.",
-        "Responsive React.js frontend with live standings and automatic points calculation."
+        "Full-stack web application to manage cricket tournaments, teams, players, matches, schedules, and points tables.",
+        "Backend built with Spring Boot using a layered architecture — Controller, Service, Repository, and Entity layers.",
+        "RESTful APIs for team, player, tournament, match, and score management using Spring Data JPA and MySQL.",
+        "Responsive React.js frontend to manage tournaments, view fixtures, update match results, and display standings.",
+        "Includes CRUD operations, automatic points-table calculation, and match scheduling functionality."
       ],
-      stack: "Java · Spring Boot · Hibernate · MySQL · React.js · REST APIs · Maven"
+      stack: "Java · Spring Boot · Hibernate/JPA · MySQL · React.js · REST APIs · Maven"
+    },
+    {
+      title: "Personal Portfolio Website",
+      status: "Live — you're on it right now",
+      github: "https://github.com/hemanthkumar1012",
+      desc: [
+        "This site. Built from scratch with plain HTML, CSS, and JavaScript — no frameworks, no build step.",
+        "Content-driven architecture: every section, skill, and project renders from a single JS data object.",
+        "Apple-inspired UI — floating frosted-glass navbar, animated hero, drifting gradient background blobs.",
+        "Scroll-triggered reveal animations, expandable project cards, and a scroll-aware, smooth-scrolling nav."
+      ],
+      stack: "HTML5 · CSS3 · Vanilla JavaScript · IntersectionObserver API"
     }
   ],
   experience: [
     { yr: "Jun–Nov 2023", title: "Industrial Trainee — Electrical Maintenance", org: "Tirumala Milk Products Pvt. Ltd. (Lactalis Group)",
-      desc: "Supported preventive & breakdown maintenance of electrical equipment for continuous plant operations." }
+      desc: "Assisted with preventive and breakdown maintenance of electrical equipment, working alongside the maintenance team to support continuous plant operations. Gained hands-on exposure to industrial electrical systems and safety procedures." }
   ],
   education: [
     { yr: "2024–2027", title: "B.Tech, Computer Science Engineering", org: "Sri Venkateswara University College of Engineering — Currently Pursuing" },
@@ -186,7 +228,7 @@ const data = {
   ],
   certifications: ["CCBP 4.0 Full Stack Development — NXTWave (Expected 2027)"],
   sections: [
-    {id:"about",label:"About"},{id:"skills",label:"Skills"},{id:"projects",label:"Projects"},
+    {id:"home",label:"Home"},{id:"about",label:"About"},{id:"skills",label:"Skills"},{id:"projects",label:"Projects"},
     {id:"experience",label:"Experience"},{id:"education",label:"Education"},{id:"contact",label:"Contact"}
   ]
 };
@@ -200,24 +242,36 @@ function render(d){
     d.sections.map(s=>`<button data-target="${s.id}">${s.label}</button>`).join('');
 
   const header = el('header','hero');
-  header.id = 'about';
+  header.id = 'home';
   header.innerHTML = `
     <div class="eyebrow">Portfolio</div>
     <h1>${d.name}</h1>
     <div class="role">${d.role}</div>
     <p class="tagline">${d.tagline}</p>
     <div class="cta-row">
-      <a class="btn primary" href="mailto:${d.contact.email}">Get in touch</a>
+      <a class="btn primary" href="mailto:${d.contact.email}" target="_blank" rel="noopener noreferrer">Get in touch</a>
       <button class="btn ghost" data-target="projects">View work</button>
     </div>
     <div class="scroll-hint">Scroll<span class="chevron"></span></div>`;
   app.appendChild(header);
 
+  const aboutSec = el('section','reveal');
+  aboutSec.id = 'about';
+  aboutSec.innerHTML = `<div class="wrap">
+    <div class="section-head"><div class="kicker">Who I am</div><div class="section-title">About</div></div>
+    <div class="about-text">${d.about.map(p=>`<p>${p}</p>`).join('')}</div></div>`;
+  app.appendChild(aboutSec);
+
   const skillsSec = el('section','reveal');
   skillsSec.id = 'skills';
   skillsSec.innerHTML = `<div class="wrap">
     <div class="section-head"><div class="kicker">Toolkit</div><div class="section-title">Skills</div></div>
-    <div class="skills">${d.skills.map(s=>`<span class="chip">${s}</span>`).join('')}</div></div>`;
+    <div class="skills-groups">${d.skills.map(g=>`
+      <div class="skill-group">
+        <div class="skill-cat">${g.category}</div>
+        <div class="skills">${g.items.map(s=>`<span class="chip">${s}</span>`).join('')}</div>
+      </div>`).join('')}
+    </div></div>`;
   app.appendChild(skillsSec);
 
   const projSec = el('section','reveal');
@@ -228,7 +282,10 @@ function render(d){
       <div class="card">
         <div class="card-head" data-toggle="proj-${i}">
           <div><h3>${p.title}</h3><div class="meta">${p.status}</div></div>
-          <button class="toggle-btn" id="btn-proj-${i}">View details</button>
+          <div class="card-actions">
+            <a class="toggle-btn" href="${p.github}" target="_blank" rel="noopener noreferrer" aria-label="View ${p.title} on GitHub" onclick="event.stopPropagation()">GitHub ↗</a>
+            <button class="toggle-btn" id="btn-proj-${i}" aria-expanded="false" aria-controls="proj-${i}">View details</button>
+          </div>
         </div>
         <div class="card-body" id="proj-${i}">
           <ul>${p.desc.map(x=>`<li>${x}</li>`).join('')}</ul>
@@ -272,27 +329,28 @@ function render(d){
       <h2>Let's build something.</h2>
       <p>Open to internships and full-stack opportunities — reach out any time.</p>
       <div class="cta-row">
-        <a class="btn primary" href="mailto:${d.contact.email}">${d.contact.email}</a>
+        <a class="btn primary" href="mailto:${d.contact.email}" target="_blank" rel="noopener noreferrer">${d.contact.email}</a>
         <a class="btn ghost" href="tel:${d.contact.phone}">${d.contact.phone}</a>
       </div>
       <div class="cta-row" style="margin-top:14px">
-        <a class="btn ghost" href="${d.contact.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a class="btn ghost" href="${d.contact.github}" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="btn ghost" href="${d.contact.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="V. Hemanth Kumar on LinkedIn">LinkedIn</a>
+        <a class="btn ghost" href="${d.contact.github}" target="_blank" rel="noopener noreferrer" aria-label="V. Hemanth Kumar on GitHub">GitHub</a>
       </div>
     </div></div>`;
   app.appendChild(contactSec);
 
-  const foot = el('footer','', `${d.location} · built with HTML, CSS &amp; JavaScript`);
+  const foot = el('footer','', `© 2026 V. Hemanth Kumar · ${d.location} · built with HTML, CSS &amp; JavaScript`);
   app.appendChild(foot);
 }
 
 render(data);
 
-// nav: smooth scroll + active state (works for both nav buttons and the hero "View work" button)
+// nav: smooth scroll + active state (works for nav buttons and the hero "View work" button)
 document.querySelectorAll('[data-target]').forEach(b=>b.addEventListener('click',()=>{
   const t = document.getElementById(b.dataset.target);
   if(t) t.scrollIntoView({behavior:'smooth'});
   document.getElementById('navLinks').classList.remove('open');
+  document.getElementById('navToggle').setAttribute('aria-expanded','false');
 }));
 
 const navBtns = [...document.querySelectorAll('.nav-links button')];
@@ -304,7 +362,9 @@ const setActive = () => {
 };
 
 document.getElementById('navToggle').addEventListener('click', ()=>{
-  document.getElementById('navLinks').classList.toggle('open');
+  const links = document.getElementById('navLinks');
+  const open = links.classList.toggle('open');
+  document.getElementById('navToggle').setAttribute('aria-expanded', open ? 'true' : 'false');
 });
 
 const io = new IntersectionObserver((entries)=>{
@@ -318,6 +378,12 @@ document.querySelectorAll('[data-toggle]').forEach(head=>{
     const btn = document.getElementById('btn-'+head.dataset.toggle);
     const open = body.classList.toggle('open');
     btn.textContent = open ? 'Hide details' : 'View details';
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  head.setAttribute('tabindex','0');
+  head.setAttribute('role','button');
+  head.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); head.click(); }
   });
 });
 
