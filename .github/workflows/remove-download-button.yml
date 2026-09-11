@@ -1,0 +1,56 @@
+name: Remove portfolio download button
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  remove-download-button:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Remove download button
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+
+          original = text
+
+          # Remove anchor/button elements whose visible label is a resume/download CTA.
+          patterns = [
+              r'<a\\b[^>]*>\\s*[^<]*(?:Download\\s+Now|Download\\s+Resume|Download\\s+CV)[^<]*\\s*</a>',
+              r'<button\\b[^>]*>\\s*[^<]*(?:Download\\s+Now|Download\\s+Resume|Download\\s+CV)[^<]*\\s*</button>',
+          ]
+          for pattern in patterns:
+              text = re.sub(pattern, '', text, flags=re.I | re.S)
+
+          if text == original:
+              raise SystemExit('No matching download button was found; refusing to make an unrelated change.')
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Remove resume download button"
+          git push
+
+      - name: Remove temporary workflow
+        if: success()
+        run: |
+          git rm .github/workflows/remove-download-button.yml
+          git commit -m "Remove temporary portfolio cleanup workflow"
+          git push
