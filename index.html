@@ -1,426 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>V. Hemanth Kumar — Portfolio</title>
-<meta name="description" content="Portfolio of V. Hemanth Kumar, a Computer Science Engineering student (B.Tech, 2027) interested in Full Stack Development, Artificial Intelligence, Data Analytics, and Product Management.">
-<meta name="author" content="V. Hemanth Kumar">
-<meta property="og:title" content="V. Hemanth Kumar — Portfolio">
-<meta property="og:description" content="Computer Science Engineering student exploring Full Stack Development, AI, Data Analytics, and Product Management.">
-<meta property="og:type" content="website">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f5f5f7">
+<title>V. Hemanth Kumar — Portfolio</title>
 <style>
-:root{
---bg:#f5f5f7;
---bg2:#ffffff;
---ink:#1d1d1f;
---dim:#6e6e73;
---blue:#0071e3;
---blue-d:#0059b3;
---line:rgba(0,0,0,.08);
---glass:rgba(255,255,255,.72);
---sans:-apple-system,BlinkMacSystemFont,'Inter','Helvetica Neue',Arial,sans-serif;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-a{color:var(--blue);text-decoration:none}
-.wrap{max-width:1000px;margin:0 auto;padding:0 24px}
-button{font-family:var(--sans);cursor:pointer;background:none;border:none;color:inherit}
-/* ---- floating glass nav ---- */
-nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:100;
-background:var(--glass);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);
-border:1px solid var(--line);border-radius:980px;box-shadow:0 8px 30px rgba(0,0,0,.08);
-padding:8px 8px;transition:padding .3s ease,box-shadow .3s ease}
-nav.scrolled{padding:6px 6px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
-.nav-inner{display:flex;align-items:center;gap:2px}
-.nav-brand{font-weight:600;font-size:14px;padding:0 14px 0 10px;color:var(--ink);white-space:nowrap}
-.nav-links{display:flex;gap:2px}
-.nav-links button{font-size:13px;color:var(--dim);padding:9px 14px;border-radius:980px;transition:.2s;font-weight:500}
-.nav-links button:hover{color:var(--ink);background:rgba(0,0,0,.04)}
-.nav-links button.active{color:#fff;background:var(--ink)}
-.nav-toggle{display:none}
-/* ---- floating gradient blobs ---- */
-.blobs{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;will-change:transform}
-.blob1{width:520px;height:520px;background:radial-gradient(circle,#7dd3fc,transparent 70%);top:-160px;left:-120px}
-.blob2{width:460px;height:460px;background:radial-gradient(circle,#c4b5fd,transparent 70%);top:60px;right:-160px}
-.blob3{width:400px;height:400px;background:radial-gradient(circle,#fbcfe8,transparent 70%);top:900px;left:40%}
-main{position:relative;z-index:1}
-/* ---- hero ---- */
-header.hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 60px}
-.eyebrow{font-size:15px;color:var(--blue);font-weight:600;opacity:0;animation:fadeUp .7s ease .1s forwards}
-h1{font-size:clamp(42px,8vw,88px);font-weight:700;letter-spacing:-2.5px;margin:6px 0 4px;
-background:linear-gradient(180deg,#1d1d1f 40%,#4b4b4d);-webkit-background-clip:text;background-clip:text;color:transparent;
-opacity:0;animation:fadeUp .8s ease .2s forwards}
-.role{font-size:clamp(20px,3vw,28px);color:var(--dim);font-weight:500;opacity:0;animation:fadeUp .8s ease .3s forwards}
-.tagline{max-width:56ch;color:var(--dim);margin-top:20px;font-size:17px;opacity:0;animation:fadeUp .8s ease .4s forwards}
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.cta-row{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;opacity:0;animation:fadeUp .8s ease .5s forwards}
-.btn{font-size:15px;font-weight:500;padding:13px 26px;border-radius:980px;transition:.25s cubic-bezier(.2,.8,.2,1)}
-.btn.primary{background:var(--blue);color:#fff}
-.btn.primary:hover{background:var(--blue-d);transform:translateY(-2px) scale(1.02);box-shadow:0 10px 24px rgba(0,113,227,.35)}
-.btn.ghost{background:var(--bg2);color:var(--ink);border:1px solid var(--line)}
-.btn.ghost:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 10px 24px rgba(0,0,0,.08)}
-.scroll-hint{margin-top:70px;color:var(--dim);font-size:12px;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp .8s ease .6s forwards}
-.scroll-hint .chevron{width:9px;height:9px;border-right:2px solid var(--dim);border-bottom:2px solid var(--dim);transform:rotate(45deg);animation:bounce 1.8s ease-in-out infinite}
-@keyframes bounce{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(4px,4px)}}
-/* ---- sections ---- */
-section{padding:120px 0}
-.section-head{text-align:center;margin-bottom:56px}
-.kicker{font-size:13px;font-weight:600;color:var(--blue);letter-spacing:.5px;text-transform:uppercase}
-.section-title{font-size:clamp(30px,5vw,44px);font-weight:700;letter-spacing:-1px;margin-top:8px}
-.reveal{opacity:0;transform:translateY(36px) scale(.97);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
-.reveal.in{opacity:1;transform:translateY(0) scale(1)}
-/* ---- about ---- */
-.about-text{max-width:680px;margin:0 auto;text-align:center;color:var(--dim);font-size:17px}
-.about-text p{margin-bottom:16px}
-.about-text p:last-child{margin-bottom:0}
-.about-text strong{color:var(--ink);font-weight:600}
-/* ---- skills floating pills ---- */
-.skills-groups{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:30px}
-.skill-group{text-align:left}
-.skill-cat{font-size:13px;font-weight:600;color:var(--dim);letter-spacing:.5px;text-transform:uppercase;margin-bottom:14px}
-.skills{display:flex;flex-wrap:wrap;gap:12px}
-.chip{background:var(--bg2);border:1px solid var(--line);color:var(--ink);font-size:14px;font-weight:500;
-padding:10px 20px;border-radius:980px;box-shadow:0 2px 10px rgba(0,0,0,.04);transition:.25s cubic-bezier(.2,.8,.2,1)}
-.chip:hover{transform:translateY(-4px);box-shadow:0 14px 26px rgba(0,0,0,.1);border-color:transparent}
-/* ---- floating cards ---- */
-.card{background:var(--bg2);border:1px solid var(--line);border-radius:24px;padding:36px;margin-bottom:24px;
-box-shadow:0 4px 24px rgba(0,0,0,.05);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
-.card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(0,0,0,.1)}
-.card-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:16px;cursor:pointer}
-.card h3{font-size:22px;font-weight:600}
-.meta{color:var(--blue);font-size:13px;font-weight:600;margin-top:6px}
-.card-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-.toggle-btn{display:inline-block;font-size:13px;font-weight:600;color:var(--blue);white-space:nowrap;padding:8px 16px;border-radius:980px;background:rgba(0,113,227,.08)}
-.toggle-btn:hover{background:rgba(0,113,227,.15)}
-.toggle-btn.demo{color:#fff;background:var(--blue)}
-.toggle-btn.demo:hover{background:var(--blue-d)}
-.card-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.2,.8,.2,1)}
-.card-body.open{max-height:500px}
-.card ul{padding:18px 0 0 20px;color:var(--dim);font-size:15px}
-.card li{margin-bottom:8px}
-.stack{font-size:13px;color:var(--ink);font-weight:600;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
-/* ---- timeline cards ---- */
-.timeline{max-width:760px;margin:0 auto}
-.tl-item{display:grid;grid-template-columns:140px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--line)}
-.tl-item:last-child{border-bottom:none}
-.tl-item .yr{font-size:13px;font-weight:600;color:var(--dim);padding-top:2px}
-.tl-item h3{font-size:17px;font-weight:600}
-.tl-item p{color:var(--dim);font-size:14px;margin-top:4px}
-/* ---- contact / closing ---- */
-.contact-card{max-width:760px;margin:0 auto;text-align:center;background:linear-gradient(160deg,#eef4ff,#f7ecff);
-border-radius:32px;padding:72px 40px;border:1px solid var(--line)}
-.contact-card h2{font-size:clamp(28px,4vw,40px);font-weight:700;letter-spacing:-1px}
-.contact-card p{color:var(--dim);margin-top:14px;font-size:16px}
-.contact-card .cta-row{margin-top:30px}
-footer{padding:48px 24px;text-align:center;color:var(--dim);font-size:13px}
-#toTop{position:fixed;bottom:28px;right:28px;z-index:90;width:44px;height:44px;border-radius:50%;
-background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--line);color:var(--ink);
-box-shadow:0 8px 24px rgba(0,0,0,.1);opacity:0;pointer-events:none;transition:.3s;font-size:16px}
-#toTop.show{opacity:1;pointer-events:auto}
-#toTop:hover{transform:translateY(-3px)}
-@media(max-width:760px){
-nav{left:16px;right:16px;transform:none;width:auto}
-.nav-inner{justify-content:space-between}
-.nav-links{position:fixed;top:70px;left:16px;right:16px;background:var(--glass);backdrop-filter:blur(20px);
-border:1px solid var(--line);border-radius:20px;flex-direction:column;padding:8px;display:none;gap:2px}
-.nav-links.open{display:flex}
-.nav-links button{text-align:left}
-.nav-toggle{display:block;font-size:18px;padding:8px 14px}
-.tl-item{grid-template-columns:1fr}
-section{padding:80px 0}
-.card-actions{justify-content:flex-start;width:100%}
-}
-@media(prefers-reduced-motion:reduce){
-*{animation-duration:.01ms!important;transition-duration:.01ms!important}
-}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#f5f5f7}
+iframe{display:block;width:100%;height:100%;border:0;background:#f5f5f7}
 </style>
 </head>
 <body>
-<div class="blobs"><div class="blob blob1" id="b1"></div><div class="blob blob2" id="b2"></div><div class="blob blob3" id="b3"></div></div>
-<nav id="nav" aria-label="Primary navigation">
-<div class="nav-inner">
-<span class="nav-brand">VHK</span>
-<div class="nav-links" id="navLinks"></div>
-<button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">☰</button>
-</div>
-</nav>
-<main id="app"></main>
-<button id="toTop" aria-label="Back to top">↑</button>
+<iframe id="portfolioFrame" src="legacy.html" title="V. Hemanth Kumar Portfolio"></iframe>
 <script>
-const data = {
-name: "V. Hemanth Kumar",
-role: "Computer Science Engineering Student",
-location: "Punganur, Andhra Pradesh",
-tagline: "Graduating in 2027, with a focus on Full Stack Development, Artificial Intelligence, Data Analytics, and Product Management. I enjoy building practical, real-world applications and continuously learning new technologies.",
-about: [
-"I'm a Computer Science Engineering student at Sri Venkateswara University College of Engineering, graduating in 2027. I'm drawn to <strong>Full Stack Development</strong>, <strong>Artificial Intelligence</strong>, <strong>Data Analytics</strong>, and <strong>Product Management</strong> — and I enjoy the process of turning an idea into working software.",
-"Alongside my coursework, I'm building hands-on skills in software engineering through self-directed projects and continuous learning — from full-stack web applications to AI-powered agents and production-style platforms with real authentication, deployment, and testing."
-],
-contact: {
-email: "hemanthkumaryadav13@gmail.com",
-phone: "+91 7075979460",
-linkedin: "https://www.linkedin.com/in/v-hemanth-kumar-yadav/",
-github: "https://github.com/hemanthkumar1012",
-resume: "https://drive.google.com/uc?export=download&id=1izmayC5H4yyI-ltTItFMaPTc1uSDAJ7O"
-},
-skills: [
-{ category: "Languages", items: ["Java","Python","JavaScript","C","SQL"] },
-{ category: "Frontend", items: ["HTML5","CSS3","React.js","Vite","Tailwind CSS"] },
-{ category: "Backend", items: ["Spring Boot","FastAPI","Node.js","Express.js","REST APIs","JWT Authentication"] },
-{ category: "Databases", items: ["MySQL","MongoDB","SQLAlchemy"] },
-{ category: "Tools", items: ["Git","GitHub","Docker","Linux","Maven"] },
-{ category: "Other", items: ["Data Analytics","DSA","Generative AI (Gemini API)"] }
-],
-projects: [
-{
-title: "ApplyRight",
-status: "Production build — Job Seeker &amp; Recruiter portals live",
-github: "https://github.com/hemanthkumar1012/hireai",
-demo: "https://applyright-puce.vercel.app",
-desc: [
-"Flagship-style recruitment and career-intelligence platform with dedicated portals for Job Seekers and Recruiters.",
-"Job Seeker portal includes AI-assisted resume analysis, automated job matching, career gap analysis, and tailored interview preparation.",
-"Recruiter portal covers applicant tracking, AI-driven candidate ranking, analytics dashboards, and job posting management.",
-"Role-based access for Job Seeker, Recruiter, and Admin accounts, enforced through FastAPI dependency-injected authorization middleware.",
-"JWT authentication with short-lived access tokens and automatic refresh-token rotation for secure, uninterrupted sessions.",
-"Pluggable AI engine that can swap between a mock provider and Google's Gemini API for resume and career analysis.",
-"Containerized with Docker and deployed with a FastAPI backend and a Vite-powered React frontend."
-],
-stack: "FastAPI · Python · React.js (Vite) · SQLAlchemy · JWT Auth · Docker · Google Gemini API"
-},
-{
-title: "ParcelPilot AI",
-status: "Built for the CalQuity AI Engineer technical assessment",
-github: "https://github.com/hemanthkumar1012/parcelpilot-ai-agent",
-demo: "https://parcelpilot-ai-agent.onrender.com",
-desc: [
-"Evidence-first AI customer-support agent that answers natural-language questions using a supplied logistics data pack.",
-"Enforces per-customer account scope in the tool layer and resolves conflicting information using a defined source-precedence order: signed agreements, then current policy/SOP documentation, then historical context.",
-"Looks up accounts, orders, and tickets, and retrieves policy, SOP, agreement, and product documentation to ground every answer in evidence.",
-"Handles multi-step reasoning for cancellations, service credits, and SLA breaches, and prepares state-changing escalations that require explicit confirmation before they execute.",
-"Surfaces tool activity and source evidence directly in the chat UI so every answer stays auditable.",
-"Backed by an automated test suite of 20+ tests covering account scoping, source precedence, and confirmation-gated actions."
-],
-stack: "Python · FastAPI · Pytest · Uvicorn · Render"
-},
-{
-title: "Cricket Tournament Management System",
-status: "Live demo deployed",
-github: "https://github.com/hemanthkumar1012/Cricket-Tournament-Management-System-",
-demo: "https://cricket-tournament-management-syste-theta.vercel.app",
-desc: [
-"Full-stack web application to manage cricket tournaments, teams, players, matches, schedules, and points tables.",
-"Backend built with Spring Boot (Java 21) using a layered architecture — Controller, Service, Repository, and Entity layers — secured with JWT authentication.",
-"RESTful APIs for team, player, tournament, match, and score management using Spring Data JPA and MySQL.",
-"React (Vite, Tailwind CSS v4) frontend for managing tournaments, viewing fixtures, updating match results, and following live score simulation and standings.",
-"Automatic points-table calculation, match scheduling, and tournament statistics.",
-"Containerized with Docker Compose — MySQL, the Spring Boot backend, and an Nginx-served React frontend — for production deployment."
-],
-stack: "Java 21 · Spring Boot · Hibernate/JPA · MySQL · React.js (Vite) · Tailwind CSS · REST APIs · JWT · Docker"
-},
-{
-title: "Personal Portfolio Website",
-status: "Live — you're on it right now",
-github: "https://github.com/hemanthkumar1012/Hemanth-kumar-portfolio",
-desc: [
-"This site. Built from scratch with plain HTML, CSS, and JavaScript — no frameworks, no build step.",
-"Content-driven architecture: every section, skill, and project renders from a single JS data object.",
-"Apple-inspired UI — floating frosted-glass navbar, animated hero, drifting gradient background blobs.",
-"Scroll-triggered reveal animations, expandable project cards, and a scroll-aware, smooth-scrolling nav."
-],
-stack: "HTML5 · CSS3 · Vanilla JavaScript · IntersectionObserver API"
-}
-],
-experience: [
-{ yr: "Jun–Nov 2023", title: "Industrial Trainee — Electrical Maintenance", org: "Tirumala Milk Products Pvt. Ltd. (Lactalis Group)",
-desc: "Assisted with preventive and breakdown maintenance of electrical equipment, working alongside the maintenance team to support continuous plant operations. Gained hands-on exposure to industrial electrical systems and safety procedures." }
-],
-education: [
-{ yr: "2024–2027", title: "B.Tech, Computer Science Engineering", org: "Sri Venkateswara University College of Engineering — Currently Pursuing" },
-{ yr: "2021–2024", title: "Diploma, Electrical & Electronics Engineering", org: "Sri Venkateswara Govt. Polytechnic, Tirupati — 73.39%" }
-],
-certifications: ["CCBP 4.0 Full Stack Development — NXTWave (Expected 2027)"],
-sections: [
-{id:"home",label:"Home"},{id:"about",label:"About"},{id:"skills",label:"Skills"},{id:"projects",label:"Projects"},
-{id:"experience",label:"Experience"},{id:"education",label:"Education"},{id:"contact",label:"Contact"}
-]
-};
-
-const el = (tag, cls, html) => { const e = document.createElement(tag); if(cls) e.className = cls; if(html!==undefined) e.innerHTML = html; return e; };
-
-function render(d){
-const app = document.getElementById('app');
-
-document.getElementById('navLinks').innerHTML =
-d.sections.map(s=>`<button data-target="${s.id}">${s.label}</button>`).join('');
-
-const header = el('header','hero');
-header.id = 'home';
-header.innerHTML = `
-<div class="eyebrow">Portfolio</div>
-<h1>${d.name}</h1>
-<div class="role">${d.role}</div>
-<p class="tagline">${d.tagline}</p>
-<div class="cta-row">
-<a class="btn primary" href="mailto:${d.contact.email}" target="_blank" rel="noopener noreferrer">Get in touch</a>
-<button class="btn ghost" data-target="projects">View work</button>
-
-</div>
-<div class="scroll-hint">Scroll<span class="chevron"></span></div>`;
-app.appendChild(header);
-
-const aboutSec = el('section','reveal');
-aboutSec.id = 'about';
-aboutSec.innerHTML = `<div class="wrap">
-<div class="section-head"><div class="kicker">Who I am</div><div class="section-title">About</div></div>
-<div class="about-text">${d.about.map(p=>`<p>${p}</p>`).join('')}</div></div>`;
-app.appendChild(aboutSec);
-
-const skillsSec = el('section','reveal');
-skillsSec.id = 'skills';
-skillsSec.innerHTML = `<div class="wrap">
-<div class="section-head"><div class="kicker">Toolkit</div><div class="section-title">Skills</div></div>
-<div class="skills-groups">${d.skills.map(g=>`
-<div class="skill-group">
-<div class="skill-cat">${g.category}</div>
-<div class="skills">${g.items.map(s=>`<span class="chip">${s}</span>`).join('')}</div>
-</div>`).join('')}
-</div></div>`;
-app.appendChild(skillsSec);
-
-const projSec = el('section','reveal');
-projSec.id = 'projects';
-projSec.innerHTML = `<div class="wrap">
-<div class="section-head"><div class="kicker">Selected work</div><div class="section-title">Projects</div></div>
-${d.projects.map((p,i)=>`
-<div class="card">
-<div class="card-head" data-toggle="proj-${i}">
-<div><h3>${p.title}</h3><div class="meta">${p.status}</div></div>
-<div class="card-actions">
-${p.demo ? `<a class="toggle-btn demo" href="${p.demo}" target="_blank" rel="noopener noreferrer" aria-label="View live demo of ${p.title}" onclick="event.stopPropagation()">Live Demo ↗</a>` : ''}
-<a class="toggle-btn" href="${p.github}" target="_blank" rel="noopener noreferrer" aria-label="View ${p.title} on GitHub" onclick="event.stopPropagation()">GitHub ↗</a>
-<button class="toggle-btn" id="btn-proj-${i}" aria-expanded="false" aria-controls="proj-${i}">View details</button>
-</div>
-</div>
-<div class="card-body" id="proj-${i}">
-<ul>${p.desc.map(x=>`<li>${x}</li>`).join('')}</ul>
-<div class="stack">${p.stack}</div>
-</div>
-</div>`).join('')}
-</div>`;
-app.appendChild(projSec);
-
-const expSec = el('section','reveal');
-expSec.id = 'experience';
-expSec.innerHTML = `<div class="wrap">
-<div class="section-head"><div class="kicker">Hands-on</div><div class="section-title">Experience</div></div>
-<div class="timeline">${d.experience.map(e=>`
-<div class="tl-item">
-<div class="yr">${e.yr}</div>
-<div><h3>${e.title}</h3><p>${e.org}</p><p>${e.desc}</p></div>
-</div>`).join('')}</div></div>`;
-app.appendChild(expSec);
-
-const eduSec = el('section','reveal');
-eduSec.id = 'education';
-eduSec.innerHTML = `<div class="wrap">
-<div class="section-head"><div class="kicker">Background</div><div class="section-title">Education</div></div>
-<div class="timeline">${d.education.map(e=>`
-<div class="tl-item">
-<div class="yr">${e.yr}</div>
-<div><h3>${e.title}</h3><p>${e.org}</p></div>
-</div>`).join('')}
-<div class="tl-item">
-<div class="yr">Certification</div>
-<div>${d.certifications.map(c=>`<h3 style="font-size:15px">${c}</h3>`).join('')}</div>
-</div>
-</div></div>`;
-app.appendChild(eduSec);
-
-const contactSec = el('section','reveal');
-contactSec.id = 'contact';
-contactSec.innerHTML = `<div class="wrap">
-<div class="contact-card">
-<h2>Let's build something.</h2>
-<p>Open to internships and full-stack opportunities — reach out any time.</p>
-<div class="cta-row">
-<a class="btn primary" href="mailto:${d.contact.email}" target="_blank" rel="noopener noreferrer">${d.contact.email}</a>
-<a class="btn ghost" href="tel:${d.contact.phone}">${d.contact.phone}</a>
-</div>
-<div class="cta-row" style="margin-top:14px">
-<a class="btn ghost" href="${d.contact.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="V. Hemanth Kumar on LinkedIn">LinkedIn</a>
-<a class="btn ghost" href="${d.contact.github}" target="_blank" rel="noopener noreferrer" aria-label="V. Hemanth Kumar on GitHub">GitHub</a>
-
-</div>
-</div></div>`;
-app.appendChild(contactSec);
-
-const foot = el('footer','', `© 2026 V. Hemanth Kumar · ${d.location} · built with HTML, CSS &amp; JavaScript`);
-app.appendChild(foot);
-}
-
-render(data);
-
-// nav: smooth scroll + active state (works for nav buttons and the hero "View work" button)
-document.querySelectorAll('[data-target]').forEach(b=>b.addEventListener('click',()=>{
-const t = document.getElementById(b.dataset.target);
-if(t) t.scrollIntoView({behavior:'smooth'});
-document.getElementById('navLinks').classList.remove('open');
-document.getElementById('navToggle').setAttribute('aria-expanded','false');
-}));
-
-const navBtns = [...document.querySelectorAll('.nav-links button')];
-const sections = data.sections.map(s=>document.getElementById(s.id));
-const setActive = () => {
-let current = sections[0].id;
-for(const s of sections){ if(window.scrollY >= s.offsetTop - 160) current = s.id; }
-navBtns.forEach(b=>b.classList.toggle('active', b.dataset.target === current));
-};
-
-document.getElementById('navToggle').addEventListener('click', ()=>{
-const links = document.getElementById('navLinks');
-const open = links.classList.toggle('open');
-document.getElementById('navToggle').setAttribute('aria-expanded', open ? 'true' : 'false');
+(function(){
+const frame=document.getElementById('portfolioFrame');
+frame.addEventListener('load',()=>{
+  const w=frame.contentWindow,d=w.document;
+  if(d.getElementById('immersiveExperience'))return;
+  const style=d.createElement('style');style.id='immersiveExperience';style.textContent=`
+  :root{--dive:cubic-bezier(.16,1,.3,1);--line:rgba(29,29,31,.09)}
+  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  body{perspective:1200px}
+  body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9998;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(0,113,227,.08),transparent 24%);transition:background .15s ease}
+  #readingProgress{position:fixed;top:0;left:0;width:100%;height:3px;z-index:10001;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,#0071e3,#8b5cf6,#ec4899);box-shadow:0 0 18px rgba(0,113,227,.35)}
+  #diveCursor{position:fixed;width:18px;height:18px;border:1px solid rgba(0,113,227,.55);border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);transition:.2s;mix-blend-mode:multiply}
+  body.cursor-active #diveCursor{width:42px;height:42px;background:rgba(0,113,227,.08);border-color:rgba(0,113,227,.25)}
+  #diveLabel{position:fixed;right:24px;bottom:28px;z-index:9997;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.72);backdrop-filter:blur(16px);border:1px solid var(--line);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);box-shadow:0 12px 30px rgba(0,0,0,.08);opacity:0;transform:translateY(12px);transition:.4s var(--dive)}
+  #diveLabel.show{opacity:1;transform:none}#diveLabel i{width:6px;height:6px;border-radius:50%;background:#0071e3;box-shadow:0 0 0 5px rgba(0,113,227,.1)}
+  section{position:relative;isolation:isolate;transform-style:preserve-3d}
+  section:after{content:"";position:absolute;left:50%;bottom:0;width:min(760px,70%);height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);transform:translateX(-50%)}section:last-of-type:after{display:none}
+  .dive-section{opacity:0;transform:translateY(70px) scale(.97);transition:opacity 1s var(--dive),transform 1s var(--dive)}.dive-section.visible{opacity:1;transform:none}
+  .card{position:relative;overflow:hidden;transform-style:preserve-3d}.card:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--cx,50%) var(--cy,50%),rgba(0,113,227,.11),transparent 30%);opacity:0;transition:.3s}.card:hover:before{opacity:1}.card>*{position:relative;z-index:1}
+  .project-number{position:absolute!important;top:18px;right:24px;font-size:52px;line-height:1;font-weight:800;letter-spacing:-4px;color:rgba(29,29,31,.045);pointer-events:none!important;z-index:0!important}
+  .deep-dive{display:inline-flex;align-items:center;gap:7px;margin-top:10px;padding:9px 14px;border:0;border-radius:999px;background:#1d1d1f;color:#fff;font:700 12px -apple-system,BlinkMacSystemFont,'Inter','Helvetica Neue',Arial,sans-serif;cursor:pointer;transition:.25s var(--dive)}.deep-dive:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,0,0,.16)}
+  #projectDive{position:fixed;inset:0;z-index:10002;display:none;overflow:auto;background:rgba(245,245,247,.96);backdrop-filter:blur(24px);opacity:0}#projectDive.open{display:block;animation:diveOpen .5s var(--dive) forwards}@keyframes diveOpen{to{opacity:1}}
+  .dive-inner{max-width:1080px;min-height:100%;margin:auto;padding:100px 28px 90px}.dive-close{position:fixed;top:22px;right:24px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.85);font-size:22px;cursor:pointer;z-index:3}.dive-kicker{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#0071e3}.dive-title{font-size:clamp(44px,8vw,88px);line-height:.98;letter-spacing:-4px;margin:10px 0 20px}.dive-status{font-size:15px;color:var(--dim);max-width:760px}.dive-grid{display:grid;grid-template-columns:1.4fr .8fr;gap:26px;margin-top:60px}.dive-panel{background:rgba(255,255,255,.86);border:1px solid var(--line);border-radius:28px;padding:30px;box-shadow:0 20px 60px rgba(0,0,0,.06)}.dive-panel h4{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--dim);margin-bottom:18px}.dive-list{display:grid;gap:14px;list-style:none;padding:0}.dive-list li{color:var(--dim);font-size:15px;padding-left:22px;position:relative}.dive-list li:before{content:"";position:absolute;left:0;top:.65em;width:7px;height:7px;border-radius:50%;background:#0071e3;box-shadow:0 0 0 5px rgba(0,113,227,.08)}.dive-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}.dive-actions a{display:inline-flex;padding:11px 16px;border-radius:999px;background:#0071e3;color:#fff;font-size:13px;font-weight:700}.dive-actions a.secondary{background:#fff;color:#1d1d1f;border:1px solid var(--line)}.dive-reveal{opacity:0;transform:translateY(24px);animation:reveal .7s var(--dive) forwards}.dive-reveal:nth-child(2){animation-delay:.08s}.dive-reveal:nth-child(3){animation-delay:.16s}@keyframes reveal{to{opacity:1;transform:none}}
+  @media(max-width:760px){#diveCursor{display:none}#diveLabel{right:14px;bottom:14px}.dive-grid{grid-template-columns:1fr}.dive-inner{padding:90px 18px 70px}.dive-title{letter-spacing:-2px}.project-number{font-size:38px;right:18px}}
+  @media(prefers-reduced-motion:reduce){body:before,#diveCursor,#diveLabel{display:none!important}.dive-section{opacity:1;transform:none;transition:none}.dive-reveal{opacity:1;transform:none;animation:none}}
+  `;d.head.appendChild(style);
+  d.body.insertAdjacentHTML('afterbegin','<div id="readingProgress"></div><div id="diveCursor"></div><div id="diveLabel"><i></i><span>Scroll to explore</span></div>');
+  const cursor=d.getElementById('diveCursor'),progress=d.getElementById('readingProgress'),label=d.getElementById('diveLabel');
+  const sections=[...d.querySelectorAll('main section')];sections.forEach(s=>s.classList.add('dive-section'));
+  const io=new w.IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12,rootMargin:'0px 0px -8% 0px'});sections.forEach(s=>io.observe(s));
+  w.addEventListener('pointermove',e=>{d.documentElement.style.setProperty('--mx',e.clientX+'px');d.documentElement.style.setProperty('--my',e.clientY+'px');cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px'});
+  d.querySelectorAll('a,button,.card,.chip').forEach(x=>{x.addEventListener('mouseenter',()=>d.body.classList.add('cursor-active'));x.addEventListener('mouseleave',()=>d.body.classList.remove('cursor-active'))});
+  function scrollFX(){const max=d.documentElement.scrollHeight-w.innerHeight;progress.style.transform='scaleX('+(max>0?w.scrollY/max:0)+')';label.classList.toggle('show',w.scrollY>220);sections.forEach(s=>{const r=s.getBoundingClientRect(),h=d.querySelector('.section-head',s);if(h){const delta=(r.top+r.height/2-w.innerHeight/2)/w.innerHeight;h.style.transform='translate3d(0,'+(-delta*12)+'px,0)'}})}
+  w.addEventListener('scroll',scrollFX,{passive:true});scrollFX();
+  d.querySelectorAll('.chip').forEach(chip=>{chip.addEventListener('pointermove',e=>{const r=chip.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;chip.style.transform='translateY(-4px) rotateX('+(-y*7)+'deg) rotateY('+(x*9)+'deg)'});chip.addEventListener('pointerleave',()=>chip.style.transform='')});
+  const cards=[...d.querySelectorAll('.card')].filter(c=>/GitHub|Live Demo/i.test(c.textContent));
+  cards.forEach((card,i)=>{card.style.setProperty('--cx','50%');card.style.setProperty('--cy','50%');card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect();card.style.setProperty('--cx',((e.clientX-r.left)/r.width*100)+'%');card.style.setProperty('--cy',((e.clientY-r.top)/r.height*100)+'%')});if(!card.querySelector('.project-number'))card.insertAdjacentHTML('beforeend','<span class="project-number">0'+(i+1)+'</span>');const head=card.querySelector('.card-head');if(head&&!head.querySelector('.deep-dive')){const b=d.createElement('button');b.className='deep-dive';b.type='button';b.innerHTML='Enter project <span>↗</span>';head.appendChild(b);b.addEventListener('click',e=>{e.stopPropagation();openDive(card)})}});
+  function text(el){return el?el.innerText.trim():''}
+  function openDive(card){let o=d.getElementById('projectDive');if(!o){o=d.createElement('div');o.id='projectDive';d.body.appendChild(o)}const title=text(card.querySelector('h3'))||'Project';const status=text(card.querySelector('.meta'));const bullets=[...card.querySelectorAll('li')].map(text).filter(Boolean);const stack=text(card.querySelector('.stack'));const links=[...card.querySelectorAll('a')].filter(a=>a.href&&a.getAttribute('href')!=='#');const actions=links.map(a=>'<a class="'+(/github/i.test(a.textContent)?'secondary':'')+'" target="_blank" rel="noopener" href="'+a.href+'">'+text(a)+' ↗</a>').join('');o.innerHTML='<button class="dive-close" aria-label="Close project">×</button><div class="dive-inner"><div class="dive-kicker dive-reveal">Project deep dive</div><h2 class="dive-title dive-reveal">'+title+'</h2><p class="dive-status dive-reveal">'+status+'</p><div class="dive-grid"><div class="dive-panel dive-reveal"><h4>What I built</h4><ul class="dive-list">'+bullets.map(b=>'<li>'+b+'</li>').join('')+'</ul></div><div class="dive-panel dive-reveal"><h4>Technology & access</h4><p style="color:var(--dim);font-size:15px;line-height:1.7">'+stack+'</p><div class="dive-actions">'+actions+'</div></div></div></div>';o.classList.add('open');d.body.style.overflow='hidden';o.querySelector('.dive-close').onclick=close;d.onkeydown=e=>{if(e.key==='Escape')close()};o.onclick=e=>{if(e.target===o)close()}}
+  function close(){const o=d.getElementById('projectDive');if(o)o.classList.remove('open');d.body.style.overflow='';d.onkeydown=null}
 });
-
-const io = new IntersectionObserver((entries)=>{
-entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
-},{threshold:0.15});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-document.querySelectorAll('[data-toggle]').forEach(head=>{
-head.addEventListener('click', ()=>{
-const body = document.getElementById(head.dataset.toggle);
-const btn = document.getElementById('btn-'+head.dataset.toggle);
-const open = body.classList.toggle('open');
-btn.textContent = open ? 'Hide details' : 'View details';
-btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-});
-head.setAttribute('tabindex','0');
-head.setAttribute('role','button');
-head.addEventListener('keydown', (e)=>{
-if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); head.click(); }
-});
-});
-
-const nav = document.getElementById('nav');
-const toTop = document.getElementById('toTop');
-const b1 = document.getElementById('b1'), b2 = document.getElementById('b2'), b3 = document.getElementById('b3');
-window.addEventListener('scroll', ()=>{
-const y = window.scrollY;
-nav.classList.toggle('scrolled', y > 20);
-toTop.classList.toggle('show', y > 500);
-setActive();
-b1.style.transform = `translateY(${y*0.15}px)`;
-b2.style.transform = `translateY(${y*0.1}px)`;
-b3.style.transform = `translateY(${-y*0.08}px)`;
-});
-toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
-setActive();
+})();
 </script>
 </body>
 </html>
