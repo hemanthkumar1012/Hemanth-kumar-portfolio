@@ -2,56 +2,24 @@ name: Add ParcelPilot and LLM Evaluation Lab
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 permissions:
   contents: write
 
 jobs:
-  update-portfolio:
+  update:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Add projects to portfolio
-        shell: bash
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          import re
-
-          path = Path('index.html')
-          html = path.read_text(encoding='utf-8')
-
-          if 'ParcelPilot Platform' in html and 'LLM Evaluation Lab' in html:
-              print('Projects already present; nothing to do.')
-              raise SystemExit(0)
-
-          anchor = '''<article class="project"><div class="num">03</div><div><h3>Cricket Tournament Management System</h3>'''
-          if anchor not in html:
-              raise SystemExit('Could not find the project insertion point.')
-
-          new_projects = '''<article class="project"><div class="num">03</div><div><h3>ParcelPilot Platform</h3><div class="status">Production-oriented logistics & AI support platform</div><div class="desc"><div>Modern shipment-tracking platform built for logistics operators with end-to-end shipment visibility.</div><div>SLA and support management for tickets, carrier faults and SLA violations.</div><div>Integrated OpenAI-powered customer-support assistant for shipment lookup and policy verification.</div><div>AI assistant can prepare ticket escalations while keeping state-changing actions behind human confirmation.</div><div>JWT authentication with strict tenant isolation enforced through account-level authorization.</div><div>Safe read-only Guest Mode for demonstrations without exposing protected operations.</div><div>Database migrations and seeded demo data support repeatable local and integration testing.</div></div><div class="stackline">Python · FastAPI · SQLAlchemy · Alembic · PostgreSQL · Vanilla JavaScript · OpenAI API · Pytest</div></div><div class="project-links"><a href="https://github.com/hemanthkumar1012/parcelpilot-platform" target="_blank">GitHub ↗</a></div></article>
-<article class="project"><div class="num">04</div><div><h3>LLM Evaluation Lab</h3><div class="status">Full-stack AI evaluation & release-gating platform</div><div class="desc"><div>Evaluation workspace for determining whether model-backed customer-support workflows are improving and safe to ship.</div><div>Separates workflow contracts from versioned evaluation datasets and saved prompt/model versions.</div><div>Runs real model evaluations and stores per-case evidence, quality metrics, latency and estimated usage.</div><div>Scorecards measure task success, groundedness, refusal behavior, tool-output correctness and injection resistance.</div><div>Regression inspection compares runs and identifies the exact cases that moved from pass to fail.</div><div>Configurable release gates turn evaluation metrics into explicit pass/block decisions.</div><div>Human-review queues handle uncertain or high-impact cases and track reviewer agreement.</div></div><div class="stackline">TypeScript · React · Express · tRPC · MySQL/TiDB · Drizzle ORM · Vitest · Playwright</div></div><div class="project-links"><a href="https://github.com/hemanthkumar1012/llm-evaluation-lab" target="_blank">GitHub ↗</a></div></article>
-'''
-
-          html = html.replace(anchor, new_projects + anchor.replace('>03</div>', '>05</div>'), 1)
-
-          # The existing portfolio project becomes #06 after the two additions.
-          html = re.sub(r'(<article class="project"><div class="num">04</div><div><h3>Personal Portfolio Website</h3>)',
-                         r'<article class="project"><div class="num">06</div><div><h3>Personal Portfolio Website</h3>', html, count=1)
-
-          # The cricket project was shifted to #05 above; keep all other project data unchanged.
-          path.write_text(html, encoding='utf-8')
-          PY
-
+      - uses: actions/checkout@v4
+      - name: Update project section
+        run: python -c "from pathlib import Path; p=Path('index.html'); s=p.read_text(); anchor='<article class=\"project\"><div class=\"num\">03</div><div><h3>Cricket Tournament Management System</h3>'; assert anchor in s, 'anchor missing'; a='<article class=\"project\"><div class=\"num\">03</div><div><h3>ParcelPilot Platform</h3><div class=\"status\">Production-oriented logistics & AI support platform</div><div class=\"desc\"><div>Modern shipment-tracking platform with end-to-end shipment visibility for logistics operators.</div><div>SLA and support management for tickets, carrier faults and SLA violations.</div><div>Integrated OpenAI-powered assistant for shipment lookup and policy verification.</div><div>Escalation actions are prepared for human confirmation instead of direct AI state changes.</div><div>JWT authentication with strict tenant isolation at the account level.</div><div>Safe read-only Guest Mode for demonstrations.</div></div><div class=\"stackline\">Python · FastAPI · SQLAlchemy · Alembic · PostgreSQL · Vanilla JavaScript · OpenAI API · Pytest</div></div><div class=\"project-links\"><a href=\"https://github.com/hemanthkumar1012/parcelpilot-platform\" target=\"_blank\">GitHub ↗</a></div></article><article class=\"project\"><div class=\"num\">04</div><div><h3>LLM Evaluation Lab</h3><div class=\"status\">Full-stack AI evaluation & release-gating platform</div><div class=\"desc\"><div>Evaluation workspace for deciding whether model-backed customer-support workflows are improving and safe to ship.</div><div>Versioned workflow contracts, datasets, prompts and model configurations.</div><div>Per-case evidence, quality metrics, latency and estimated usage are persisted for inspection.</div><div>Scorecards measure task success, groundedness, refusal behavior, tool correctness and injection resistance.</div><div>Regression inspection identifies the exact cases that moved from pass to fail.</div><div>Configurable release gates turn metrics into explicit pass or block decisions.</div><div>Human-review queues handle uncertain or high-impact cases and track reviewer agreement.</div></div><div class=\"stackline\">TypeScript · React · Express · tRPC · MySQL/TiDB · Drizzle ORM · Vitest · Playwright</div></div><div class=\"project-links\"><a href=\"https://github.com/hemanthkumar1012/llm-evaluation-lab\" target=\"_blank\">GitHub ↗</a></div></div></article>'; s=s.replace(anchor,a+anchor.replace('>03</div>','>05</div>'),1); s=s.replace('<article class=\"project\"><div class=\"num\">04</div><div><h3>Personal Portfolio Website</h3>','<article class=\"project\"><div class=\"num\">06</div><div><h3>Personal Portfolio Website</h3>',1); p.write_text(s)"
       - name: Commit and remove workflow
-        shell: bash
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html .github/workflows/add-parcelpilot-llm-projects.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
           git rm .github/workflows/add-parcelpilot-llm-projects.yml
-          git commit -m "Add ParcelPilot and LLM evaluation projects to portfolio"
+          git commit -m 'Add ParcelPilot and LLM evaluation projects to portfolio'
           git push
