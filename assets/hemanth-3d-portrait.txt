@@ -1,0 +1,1 @@
+3D portrait generated for portfolio hero. Binary image asset is rendered from the same portrait reference.
