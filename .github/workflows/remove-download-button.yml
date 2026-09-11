@@ -23,13 +23,11 @@ jobs:
 
           path = Path('index.html')
           text = path.read_text(encoding='utf-8')
-
           original = text
 
-          # Remove anchor/button elements whose visible label is a resume/download CTA.
           patterns = [
-              r'<a\\b[^>]*>\\s*[^<]*(?:Download\\s+Now|Download\\s+Resume|Download\\s+CV)[^<]*\\s*</a>',
-              r'<button\\b[^>]*>\\s*[^<]*(?:Download\\s+Now|Download\\s+Resume|Download\\s+CV)[^<]*\\s*</button>',
+              r'<a\b[^>]*>\s*[^<]*(?:Download\s+Now|Download\s+Resume|Download\s+CV)[^<]*\s*</a>',
+              r'<button\b[^>]*>\s*[^<]*(?:Download\s+Now|Download\s+Resume|Download\s+CV)[^<]*\s*</button>',
           ]
           for pattern in patterns:
               text = re.sub(pattern, '', text, flags=re.I | re.S)
