@@ -1,0 +1,1 @@
+The portfolio uses a generated 3D-styled portrait asset.
