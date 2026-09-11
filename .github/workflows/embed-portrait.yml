@@ -14,13 +14,13 @@ jobs:
         run: |
           cat .github/portrait/part1.txt .github/portrait/part2.txt .github/portrait/part3.txt > /tmp/portrait.b64
           python - <<'PY'
-          import base64
+          import os
           from pathlib import Path
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
-          marker = 'data:image/webp;base64,ENCODED_IMAGE'
+          marker = '__IMAGE_B64__'
           b64 = Path('/tmp/portrait.b64').read_text().strip()
-          replacement = 'data:image/jpeg;base64,' + b64
+          replacement = b64
           if marker not in s:
               raise SystemExit('portrait marker not found')
           p.write_text(s.replace(marker, replacement, 1), encoding='utf-8')
