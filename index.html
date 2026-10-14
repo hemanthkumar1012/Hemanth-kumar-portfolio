@@ -371,10 +371,118 @@ body:after{opacity:.2;background-image:repeating-conic-gradient(from 0deg at 50%
 @media(max-width:480px){.comic-masthead{flex-direction:column;gap:4px}.comic-masthead>span:last-child{max-width:none;text-align:left}.comic-copy{padding:24px 17px 20px}.issue-line{font-size:.49rem;gap:6px}.issue-status{margin-left:0}.spider-hero .cover-title{font-size:clamp(3.65rem,15vw,4.7rem)}.comic-cta{gap:14px}.comic-text-link{font-size:.55rem}.hero-signal{gap:8px}.hero-signal small{font-size:.55rem}.signal-score b{font-size:1.4rem}.comic-art{min-height:370px}.art-corner{font-size:.44rem;top:14px}.corner-tl{left:13px}.corner-tr{right:13px}.bubble-one{left:3%;width:67px;height:67px;font-size:.8rem}.bubble-two{right:3%;width:61px;height:61px;font-size:.95rem}.art-caption{left:13px;right:13px;bottom:13px;font-size:.44rem}.comic-footerline{flex-direction:column;gap:10px}.comic-footerline span{max-width:100%}.comic-footerline a{align-self:flex-end}.section-title{font-size:3.5rem!important}.cap-grid{grid-template-columns:1fr}.contact-panel h2{font-size:3.1rem}.contact-actions{flex-direction:column}.footer-line{gap:20px}}
 @media(prefers-reduced-motion:reduce){.web-lines path,.art-radial,.bubble-two,.art-scan{animation:none!important}.web-illustration{transition:none}.project,.btn{transition:none}}
 
+
+/* ── ADVANCED INTERACTIVE LAYER / SPIDER-VERSE 03 ── */
+:root{--red:#ff304e;--blue:#398cff;--ice:#8fcbff;--black:#060914;--mx:50vw;--my:50vh}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{isolation:isolate;background:#060914}
+.web-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.58;mix-blend-mode:screen}
+.header,main,footer,.stack-strip{position:relative;z-index:2}
+.progress{z-index:200;background:linear-gradient(90deg,#ff304e,#fff 42%,#388fff 72%,#ff304e);box-shadow:0 0 10px #ff304e80;height:3px}
+.header{z-index:100}
+.scene-entry{position:fixed;inset:0;z-index:300;display:grid;place-content:center;justify-items:center;gap:18px;background:#060914;pointer-events:none;animation:scene-exit 1.2s cubic-bezier(.7,0,.2,1) .15s forwards}
+.entry-mark{font:400 clamp(2.5rem,9vw,6rem)/1 Bangers,sans-serif;color:#f5f7ff;letter-spacing:.08em;text-shadow:4px 4px 0 #ff304e,8px 8px 0 #2678e8;animation:entry-mark 1s ease both}
+.entry-mark span{color:#ff304e;font:500 .15em "DM Mono",monospace;vertical-align:top;text-shadow:none;letter-spacing:.16em}
+.entry-line{height:2px;width:min(340px,50vw);background:linear-gradient(90deg,transparent,#ff304e 25%,#fff 50%,#398cff 75%,transparent);transform-origin:left;animation:entry-line .85s cubic-bezier(.2,.75,.2,1) both}
+.cursor-aura{position:fixed;top:0;left:0;z-index:180;pointer-events:none;width:46px;height:46px;opacity:0;transform:translate3d(-100px,-100px,0);transition:opacity .25s}
+.cursor-aura span{position:absolute;inset:0;border:1px solid #8bc7ffb8;border-radius:50%;box-shadow:0 0 18px #388cff2c,inset 0 0 14px #388cff12;transition:transform .2s,border-color .2s}
+.cursor-aura:before,.cursor-aura:after{content:"";position:absolute;background:#ff304e;left:50%;top:50%;transform:translate(-50%,-50%)}
+.cursor-aura:before{width:1px;height:62px}.cursor-aura:after{height:1px;width:62px}
+body.pointer-ready .cursor-aura{opacity:1}
+body.pointer-ready a,body.pointer-ready button,body.pointer-ready .project{cursor:none}
+body.pointer-ready .cursor-aura.is-hot span{transform:scale(1.4);border-color:#ff304e}
+body.pointer-ready .cursor-aura.is-hot:before,body.pointer-ready .cursor-aura.is-hot:after{background:#8bc7ff}
+.spider-hero{perspective:1500px}
+.comic-masthead{position:relative}
+.comic-masthead:after{content:"SYSTEM ONLINE / V.02";color:#ff5a71;font-size:.52rem;letter-spacing:.14em}
+.comic-stage{min-height:min(780px,calc(100svh - 150px));grid-template-columns:1fr 1fr;transform-style:preserve-3d;border-color:#445a80;background:linear-gradient(140deg,#091321,#0b1222 45%,#0d1930);box-shadow:0 50px 130px #0009,0 0 0 1px #ffffff06;transition:border-color .4s,box-shadow .4s}
+.comic-stage:hover{border-color:#5b84c3;box-shadow:0 60px 150px #000b,0 0 40px #1558a919}
+.comic-stage:before{background:radial-gradient(ellipse at var(--stage-x,70%) var(--stage-y,30%),#2866b92b,transparent 42%),radial-gradient(circle at 0 0,#172f55 0,transparent 37%),linear-gradient(112deg,#0e1628 0%,#0b1221 52%,#0b1930 100%);transition:background .15s}
+.comic-copy{background:linear-gradient(150deg,#111b30ed,#0c1423df);backdrop-filter:blur(5px)}
+.issue-line{margin-bottom:clamp(26px,4vh,55px)}
+.cover-title{font-size:clamp(4.3rem,6.8vw,7.8rem);line-height:.76;transform:translateZ(35px)}
+.cover-title .title-ink{letter-spacing:.03em}
+.cover-title .title-red{transform:rotate(1deg) translateX(clamp(5px,1vw,18px));}
+.cover-title .title-blue{white-space:nowrap;font-size:.83em}
+.comic-lead{max-width:425px}
+.comic-art{min-height:100%;overflow:hidden;background:radial-gradient(ellipse at 55% 45%,#1b4c95 0,#10284d 32%,#071020 72%);isolation:isolate}
+.comic-art:after{content:"";position:absolute;inset:9% 7%;z-index:2;pointer-events:none;border:1px solid #9dcfff28;clip-path:polygon(0 0,19% 0,19% 1px,1px 1px,1px 19%,0 19%,0 0,100% 0,100% 19%,calc(100% - 1px) 19%,calc(100% - 1px) 1px,81% 1px,81% 0,100% 0,100% 100%,81% 100%,81% calc(100% - 1px),calc(100% - 1px) calc(100% - 1px),calc(100% - 1px) 81%,100% 81%,100% 100%,0 100%,0 81%,1px 81%,1px calc(100% - 1px),19% calc(100% - 1px),19% 100%,0 100%)}
+.web-illustration{width:116%;height:116%;filter:drop-shadow(0 20px 26px #0008) drop-shadow(0 0 26px #1e78d32b);transform:translate(calc(-50% + var(--mx,0px)),calc(-50% + var(--my,0px))) scale(var(--spider-scale,1));transition:transform .1s linear,filter .4s}
+.comic-art:hover .web-illustration{--spider-scale:1.035;filter:drop-shadow(0 26px 35px #000a) drop-shadow(0 0 46px #ff304e37)}
+.web-lines path{stroke-dasharray:2 10;stroke-linecap:round;animation:web-draw 7.5s linear infinite}
+.web-lines path:nth-child(2){animation-direction:reverse;animation-duration:13s}
+.art-radial{animation:radial-turn 65s linear infinite}
+.spider-red{filter:drop-shadow(0 0 8px #ff304e99)}
+.spider-blue{filter:drop-shadow(0 0 8px #398cffb3)}
+.hud-readout{position:absolute;z-index:6;left:23px;top:90px;display:flex;flex-direction:column;gap:8px;font:500 .5rem/1.8 "DM Mono",monospace;letter-spacing:.09em;color:#8fb7e9;text-shadow:0 1px 5px #061020}
+.hud-live{display:flex;align-items:center;gap:7px;color:#9cf5cc}.hud-live i{width:5px;height:5px;border-radius:50%;background:#5cf0a8;box-shadow:0 0 10px #5cf0a8;animation:pulse 1.3s infinite}
+.hud-crosshair{position:absolute;z-index:6;right:16%;bottom:19%;width:75px;height:75px;border:1px solid #7ec1ff52;border-radius:50%;animation:crosshair-spin 28s linear infinite}
+.hud-crosshair:before,.hud-crosshair:after{content:"";position:absolute;background:#7ec1ff55;left:50%;top:50%;transform:translate(-50%,-50%)}
+.hud-crosshair:before{width:1px;height:105px}.hud-crosshair:after{height:1px;width:105px}
+.hud-crosshair i{position:absolute;left:50%;top:-4px;width:7px;height:7px;border-radius:50%;background:#ff304e;box-shadow:0 0 14px #ff304e;transform-origin:0 41px}
+.hud-crosshair i:nth-child(2){transform:rotate(90deg)}.hud-crosshair i:nth-child(3){transform:rotate(180deg)}.hud-crosshair i:nth-child(4){transform:rotate(270deg)}
+.hud-side-code{position:absolute;right:20px;bottom:23%;z-index:7;font:500 .45rem/2 "DM Mono",monospace;color:#92bfff;letter-spacing:.1em;writing-mode:vertical-rl;opacity:.62}
+.art-corner{font-size:.48rem;letter-spacing:.17em}
+.art-caption{background:linear-gradient(0deg,#0710208c,transparent);padding:14px 8px 0}
+.comic-bubble{box-shadow:3px 3px 0 #071020,7px 7px 0 #2872cb,0 0 30px #f32c4b4f}
+.bubble-two{width:94px;height:94px;font-size:1.35rem}
+.comic-footerline{border-bottom:1px solid #263b5a;padding:15px 2px 14px}
+.comic-footerline:before{content:"";width:26px;height:3px;background:#ff304e;display:block}
+.comic-footerline span{flex:1}
+.comic-footerline a{font-size:.55rem}
+/* Light sweeps, active frames, and tactile cards */
+.project,.cap-card,.process-card,.experience-card,.cert-card,.repo-card{transform-style:preserve-3d;will-change:transform}
+.project{--tilt-x:0deg;--tilt-y:0deg;--px:50%;--py:50%;overflow:hidden;transform:perspective(1100px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(0);transition:transform .24s ease,border-color .25s,box-shadow .25s}
+.project:after{content:"";position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;background:radial-gradient(450px circle at var(--px) var(--py),#5d9cff22,transparent 58%),linear-gradient(130deg,#ff304e0a,transparent 45%,#398cff0b);transition:opacity .3s}
+.project:hover:after{opacity:1}
+.project .project-art,.project .project-body{position:relative;z-index:1}
+.project:hover{box-shadow:12px 12px 0 #e8274821,0 24px 55px #0005}
+.project:first-child:hover{transform:perspective(1100px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(-3px)}
+.project .project-art{overflow:hidden}
+.project .art-window{transition:transform .5s cubic-bezier(.2,.85,.2,1),box-shadow .5s}
+.project:hover .art-window{box-shadow:0 24px 50px #0006;transform:rotate(0) translateY(-5px) scale(1.04)}
+.project .art-orb{transition:transform .7s cubic-bezier(.2,.8,.2,1),filter .5s}
+.project:hover .art-orb{transform:scale(1.13);filter:saturate(1.4)}
+.project-tags span{transition:background .2s,color .2s,border-color .2s}
+.project:hover .project-tags span{border-color:#426ca3;color:#e1edff}
+.project-links a{position:relative;z-index:2}
+.project:first-child .project-art:after{content:"FEATURED CASE / 001";position:absolute;left:19px;top:18px;z-index:8;color:#ecf4ff;background:#0a1731c9;border-left:3px solid #ff304e;padding:7px 10px;font:500 .51rem "DM Mono",monospace;letter-spacing:.1em}
+.project:first-child .project-body:after{content:"01 — 06";position:absolute;right:23px;top:19px;color:#6786b2;font:500 .52rem "DM Mono",monospace;letter-spacing:.1em}
+.repo-archive summary{position:relative;overflow:hidden}
+.repo-archive summary:before{content:"";position:absolute;left:-50%;top:-90%;width:40%;height:300%;background:linear-gradient(90deg,transparent,#ffffff0c,transparent);transform:rotate(25deg);transition:left .6s}
+.repo-archive summary:hover:before{left:130%}
+.repo-card{transition:transform .25s,border-color .25s,background .25s}
+.repo-card:hover{transform:perspective(900px) rotateX(1deg) translateY(-4px)}
+.cap-card,.process-card{transition:transform .3s,border-color .3s,box-shadow .3s}
+.cap-card:hover,.process-card:hover{box-shadow:7px 7px 0 #e8274824,0 20px 45px #0004}
+.contact-panel{box-shadow:0 32px 100px #0008,0 0 0 1px #6fb2ff0b}
+.contact-panel .btn:hover{filter:brightness(1.1)}
+/* Section atmosphere & scroll choreography */
+.projects-section:before,.process-section:before,.resume-section:before{content:"";position:absolute;top:0;right:0;left:0;height:1px;background:linear-gradient(90deg,transparent,#ff304e88,#7cc3ff88,transparent)}
+.projects-section,.process-section,.resume-section{position:relative;isolation:isolate}
+.projects-section:after{content:"";position:absolute;right:-12vw;top:13%;width:45vw;height:45vw;max-width:720px;max-height:720px;border-radius:50%;background:radial-gradient(circle,#1355a30d,transparent 70%);pointer-events:none;z-index:-1}
+.reveal{transition:opacity .8s cubic-bezier(.2,.7,.15,1),transform .8s cubic-bezier(.2,.7,.15,1);transition-delay:var(--reveal-delay,0ms)}
+.reveal.is-visible{transition-delay:0ms}
+.section-top .section-title{max-width:800px}
+.timeline-item{transition:transform .25s}
+.timeline-item:hover{transform:translateX(5px)}
+/* Respect users who opt out of motion */
+@keyframes scene-exit{0%{opacity:1;visibility:visible}65%{opacity:1}99%{opacity:0;visibility:visible}100%{opacity:0;visibility:hidden}}
+@keyframes entry-mark{0%{opacity:0;transform:translateY(16px) scale(.94);letter-spacing:.16em}100%{opacity:1;transform:translateY(0) scale(1);letter-spacing:.08em}}
+@keyframes entry-line{0%{transform:scaleX(0);opacity:0}100%{transform:scaleX(1);opacity:1}}
+@keyframes crosshair-spin{to{transform:rotate(360deg)}}
+@media(max-width:1050px){.cover-title{font-size:clamp(3.7rem,6.4vw,6.4rem)}.comic-stage{min-height:660px}.comic-copy{padding:27px 28px}.hud-side-code{right:12px}.hud-readout{left:13px}}
+@media(max-width:760px){.comic-stage{min-height:0}.comic-copy{padding:29px 22px}.cover-title{font-size:clamp(4rem,12vw,6.3rem)}.comic-art{min-height:540px}.hud-readout{top:75px}.hud-side-code{bottom:25%;right:10px;font-size:.4rem}.hud-crosshair{right:19%;bottom:17%;width:56px;height:56px}.project{transform:none!important;will-change:auto}.project:hover{transform:translateY(-3px)!important}.web-canvas{opacity:.32}.cursor-aura{display:none}.scene-entry{animation-duration:.7s}.project:first-child .project-body:after{top:12px;right:14px}}
+@media(max-width:480px){.cover-title{font-size:clamp(3.45rem,14.4vw,4.55rem)}.comic-art{min-height:420px}.hud-readout{top:62px;font-size:.44rem}.hud-side-code{display:none}.comic-stage{border-left:0;border-right:0}.comic-art:after{inset:5%}.project:first-child .project-body:after{content:"FEATURED";font-size:.43rem}}
+@media(prefers-reduced-motion:reduce){.web-canvas,.scene-entry,.entry-mark,.entry-line,.hud-crosshair,.web-lines path,.art-radial,.bubble-two,.art-scan{animation:none!important}.scene-entry{display:none}.web-illustration{transition:none}.project,.btn,.cap-card,.process-card{transition:none!important;transform:none!important}.cursor-aura{display:none}}
+
 </style>
 </head>
 <body>
 <div class="progress" id="progress"></div>
+<canvas id="webCanvas" class="web-canvas" aria-hidden="true"></canvas>
+<div class="cursor-aura" id="cursorAura" aria-hidden="true"><span></span></div>
+<div class="scene-entry" aria-hidden="true"><div class="entry-mark">HK<span> / 616</span></div><div class="entry-line"></div></div>
 <header class="header">
   <div class="wrap nav">
     <a class="logo" href="#home" aria-label="Hemanth Kumar home"><span class="logo-mark">HK</span><span>Hemanth Kumar<small>SPIDER-VERSE · AI · SOFTWARE</small></span></a>
@@ -399,6 +507,9 @@ body:after{opacity:.2;background-image:repeating-conic-gradient(from 0deg at 50%
     </div>
     <div class="comic-art" id="comicArt" aria-label="Original Spider-Verse-inspired web illustration">
       <div class="art-corner corner-tl">VHK<br>AI // 001</div><div class="art-corner corner-tr">EARTH<br>INDIA-616</div>
+      <div class="hud-readout"><span class="hud-live"><i></i> SIGNAL LOCKED</span><span>LATENCY: LOW<br>THREAT MODEL: ACTIVE</span></div>
+      <div class="hud-crosshair" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="hud-side-code">P Y T H O N<br>A I / A G E N T S<br>R U N T I M E</div>
       <div class="art-halftone"></div><div class="art-radial"></div>
       <svg class="web-illustration" viewBox="0 0 640 640" role="img" aria-label="Stylized spider emblem with a geometric web">
         <defs><radialGradient id="spiderGlow"><stop offset="0" stop-color="#ff3b56" stop-opacity=".55"/><stop offset=".55" stop-color="#1658b8" stop-opacity=".25"/><stop offset="1" stop-color="#081020" stop-opacity="0"/></radialGradient><linearGradient id="bodyFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5165"/><stop offset=".48" stop-color="#e71d3e"/><stop offset="1" stop-color="#7f1130"/></linearGradient></defs>
@@ -626,6 +737,125 @@ body:after{opacity:.2;background-image:repeating-conic-gradient(from 0deg at 50%
     comicArt.addEventListener('pointerleave', () => {
       comicArt.style.setProperty('--mx', '0px');
       comicArt.style.setProperty('--my', '0px');
+    });
+  }
+
+
+  // High-performance ambient particle web: bounded node count, reduced-motion support.
+  const webCanvas = document.getElementById('webCanvas');
+  const ctx = webCanvas?.getContext('2d', {alpha:true});
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let webFrame = 0, webNodes = [], webW = 0, webH = 0, webDpr = 1;
+  const pointer = {x:-1000, y:-1000, active:false};
+  function seedWeb(){
+    if(!webCanvas || !ctx) return;
+    webDpr = Math.min(window.devicePixelRatio || 1, 1.65);
+    webW = window.innerWidth; webH = window.innerHeight;
+    webCanvas.width = Math.round(webW * webDpr); webCanvas.height = Math.round(webH * webDpr);
+    webCanvas.style.width = webW+'px'; webCanvas.style.height=webH+'px';
+    ctx.setTransform(webDpr,0,0,webDpr,0,0);
+    const amount = Math.min(94, Math.max(34, Math.floor(webW * webH / 17000)));
+    webNodes = Array.from({length:amount},(_,i)=>({
+      x:Math.random()*webW,y:Math.random()*webH,
+      vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,
+      radius:Math.random()*1.35+.4,
+      hue:i%5===0?'red':'blue'
+    }));
+  }
+  function drawWeb(){
+    if(!ctx || document.hidden) { webFrame=requestAnimationFrame(drawWeb); return; }
+    ctx.clearRect(0,0,webW,webH);
+    for(let i=0;i<webNodes.length;i++){
+      const a=webNodes[i];
+      if(!reducedMotion){
+        a.x+=a.vx;a.y+=a.vy;
+        if(a.x<-10)a.x=webW+10; if(a.x>webW+10)a.x=-10;
+        if(a.y<-10)a.y=webH+10; if(a.y>webH+10)a.y=-10;
+        if(pointer.active){
+          const dx=a.x-pointer.x,dy=a.y-pointer.y,d=Math.hypot(dx,dy);
+          if(d<130 && d>1){a.x+=dx/d*.16;a.y+=dy/d*.16;}
+        }
+      }
+      for(let j=i+1;j<webNodes.length;j++){
+        const b=webNodes[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy);
+        if(d<142){
+          const alpha=(1-d/142)*.21;
+          ctx.strokeStyle=a.hue==='red'?'rgba(255,48,78,'+alpha+')':'rgba(104,174,255,'+alpha+')';
+          ctx.lineWidth=.55;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+        }
+      }
+      if(pointer.active){
+        const d=Math.hypot(a.x-pointer.x,a.y-pointer.y);
+        if(d<165){ctx.strokeStyle='rgba(154,210,255,'+((1-d/165)*.32)+')';ctx.lineWidth=.8;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(pointer.x,pointer.y);ctx.stroke();}
+      }
+      ctx.fillStyle=a.hue==='red'?'rgba(255,69,98,.7)':'rgba(132,195,255,.72)';
+      ctx.beginPath();ctx.arc(a.x,a.y,a.radius,0,Math.PI*2);ctx.fill();
+    }
+    webFrame=requestAnimationFrame(drawWeb);
+  }
+  if(webCanvas && ctx){
+    seedWeb();
+    if(!reducedMotion) drawWeb();
+    else { const old=webNodes.map(n=>({...n})); drawWeb(); cancelAnimationFrame(webFrame); ctx.clearRect(0,0,webW,webH); }
+    window.addEventListener('resize',seedWeb,{passive:true});
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!reducedMotion&&!webFrame)drawWeb();});
+    window.addEventListener('pointermove',e=>{pointer.x=e.clientX;pointer.y=e.clientY;pointer.active=true;},{passive:true});
+    window.addEventListener('pointerleave',()=>{pointer.active=false;},{passive:true});
+  }
+
+  // Precision cursor aura and light follow.
+  const aura=document.getElementById('cursorAura');
+  const finePointer=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  if(aura && finePointer && !reducedMotion){
+    document.body.classList.add('pointer-ready');
+    let ax=0,ay=0,tx=0,ty=0;
+    window.addEventListener('pointermove',e=>{tx=e.clientX-23;ty=e.clientY-23;},{passive:true});
+    function moveAura(){ax+=(tx-ax)*.23;ay+=(ty-ay)*.23;aura.style.transform='translate3d('+ax+'px,'+ay+'px,0)';requestAnimationFrame(moveAura)}
+    moveAura();
+    document.querySelectorAll('a,button,.project,summary').forEach(el=>{
+      el.addEventListener('pointerenter',()=>aura.classList.add('is-hot'));
+      el.addEventListener('pointerleave',()=>aura.classList.remove('is-hot'));
+    });
+  }
+
+  // Hero light tracks the pointer. Keep the movement restrained and GPU-friendly.
+  const stage=document.querySelector('.comic-stage');
+  if(stage && finePointer && !reducedMotion){
+    stage.addEventListener('pointermove',e=>{
+      const r=stage.getBoundingClientRect();
+      stage.style.setProperty('--stage-x',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
+      stage.style.setProperty('--stage-y',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');
+    });
+    stage.addEventListener('pointerleave',()=>{stage.style.setProperty('--stage-x','70%');stage.style.setProperty('--stage-y','30%')});
+  }
+
+  // Soft 3D tilt + pointer-reactive light on project cards.
+  if(finePointer && !reducedMotion){
+    document.querySelectorAll('.project').forEach(card=>{
+      card.addEventListener('pointermove',event=>{
+        const rect=card.getBoundingClientRect();
+        const x=(event.clientX-rect.left)/rect.width;
+        const y=(event.clientY-rect.top)/rect.height;
+        card.style.setProperty('--px',(x*100).toFixed(1)+'%');
+        card.style.setProperty('--py',(y*100).toFixed(1)+'%');
+        if(window.innerWidth>760){
+          card.style.setProperty('--tilt-x',((.5-y)*3.4).toFixed(2)+'deg');
+          card.style.setProperty('--tilt-y',((x-.5)*3.8).toFixed(2)+'deg');
+        }
+      });
+      card.addEventListener('pointerleave',()=>{
+        card.style.setProperty('--tilt-x','0deg');
+        card.style.setProperty('--tilt-y','0deg');
+        card.style.setProperty('--px','50%');card.style.setProperty('--py','50%');
+      });
+    });
+    document.querySelectorAll('.repo-card,.cap-card,.process-card').forEach(card=>{
+      card.addEventListener('pointermove',event=>{
+        if(window.innerWidth<=760) return;
+        const r=card.getBoundingClientRect(),x=(event.clientX-r.left)/r.width-.5,y=(event.clientY-r.top)/r.height-.5;
+        card.style.transform='perspective(850px) rotateX('+(-y*2.4).toFixed(2)+'deg) rotateY('+(x*2.8).toFixed(2)+'deg) translateY(-3px)';
+      });
+      card.addEventListener('pointerleave',()=>{card.style.removeProperty('transform')});
     });
   }
 
