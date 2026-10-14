@@ -11,8 +11,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages-spider-redesign"
-  cancel-in-progress: true
+  group: "pages-spider-immersive-final"
+  cancel-in-progress: false
 
 jobs:
   deploy:
