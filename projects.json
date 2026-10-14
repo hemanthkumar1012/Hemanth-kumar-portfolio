@@ -1,1 +1,256 @@
-PLACEHOLDER_JSON
+[
+  {
+    "num": "01",
+    "title": "ApplyRight",
+    "status": "Production build \u2014 Job Seeker & Recruiter portals live",
+    "desc": [
+      "Recruitment and career-intelligence platform with dedicated Job Seeker and Recruiter portals.",
+      "AI-assisted resume analysis, automated matching, career-gap analysis and interview preparation.",
+      "Recruiter ATS, candidate ranking, analytics dashboards and job management.",
+      "Role-based access for Job Seeker, Recruiter and Admin accounts."
+    ],
+    "stack": "FastAPI \u00b7 Python \u00b7 React.js (Vite) \u00b7 SQLAlchemy \u00b7 JWT Auth \u00b7 Docker \u00b7 Google Gemini API",
+    "links": [
+      {
+        "label": "Live",
+        "url": "https://applyright-puce.vercel.app"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/hemanthkumar1012/hireai"
+      }
+    ]
+  },
+  {
+    "num": "02",
+    "title": "ParcelPilot AI",
+    "status": "Built for the CalQuity AI Engineer technical assessment",
+    "desc": [
+      "Evidence-first AI customer-support agent grounded in a logistics data pack.",
+      "Per-customer account scoping enforced at the tool layer.",
+      "Signed agreements and current policy/SOPs take precedence over history.",
+      "State-changing escalations require explicit confirmation; 20+ automated tests cover safety gates."
+    ],
+    "stack": "Python \u00b7 FastAPI \u00b7 Pytest \u00b7 Uvicorn \u00b7 Render",
+    "links": [
+      {
+        "label": "Live",
+        "url": "https://parcelpilot-ai-agent.onrender.com"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/hemanthkumar1012/parcelpilot-ai-agent"
+      }
+    ]
+  },
+  {
+    "num": "03",
+    "title": "ParcelPilot Platform",
+    "status": "Production-oriented logistics & AI support platform",
+    "desc": [
+      "End-to-end shipment visibility for logistics operators.",
+      "SLA and support management for tickets, carrier faults and violations.",
+      "OpenAI-powered assistant for shipment lookup and policy verification.",
+      "Human-confirmed escalation actions with strict tenant isolation and safe Guest Mode."
+    ],
+    "stack": "Python \u00b7 FastAPI \u00b7 SQLAlchemy \u00b7 Alembic \u00b7 PostgreSQL \u00b7 Vanilla JavaScript \u00b7 OpenAI API \u00b7 Pytest",
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/hemanthkumar1012/parcelpilot-platform"
+      }
+    ]
+  },
+  {
+    "num": "04",
+    "title": "LLM Evaluation Lab",
+    "status": "Full-stack AI evaluation & release-gating platform",
+    "desc": [
+      "Versioned workflow contracts, datasets, prompts and model configurations.",
+      "Per-case evidence, quality metrics, latency and estimated usage.",
+      "Scorecards for groundedness, refusals, tools and injection resistance.",
+      "Regression inspection, release gates and human-review queues."
+    ],
+    "stack": "TypeScript \u00b7 React \u00b7 Express \u00b7 tRPC \u00b7 MySQL/TiDB \u00b7 Drizzle ORM \u00b7 Vitest \u00b7 Playwright",
+    "links": [
+      {
+        "label": "Live",
+        "url": "https://llmevallab-klar2hzi.manus.space/"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/hemanthkumar1012/llm-evaluation-lab"
+      }
+    ]
+  },
+  {
+    "num": "05",
+    "title": "Cricket Tournament Management System",
+    "status": "Live demo deployed",
+    "desc": [
+      "Full-stack tournament management for teams, players, matches and schedules.",
+      "Spring Boot Java 21 layered architecture secured with JWT.",
+      "REST APIs with JPA/MySQL plus React/Vite/Tailwind frontend.",
+      "Live score simulation, standings, statistics and Docker Compose deployment."
+    ],
+    "stack": "Java 21 \u00b7 Spring Boot \u00b7 Hibernate/JPA \u00b7 MySQL \u00b7 React.js (Vite) \u00b7 Tailwind CSS \u00b7 JWT \u00b7 Docker",
+    "links": [
+      {
+        "label": "Live",
+        "url": "https://cricket-tournament-management-syste-theta.vercel.app"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/hemanthkumar1012/Cricket-Tournament-Management-System-"
+      }
+    ]
+  },
+  {
+    "num": "06",
+    "title": "AgentGuard",
+    "status": "Runtime security control plane for AI agents",
+    "desc": [
+      "Deterministic security enforcement layer between agents and tools/APIs.",
+      "Identity, least-privilege, risk scoring, data inspection, scoped credentials and MCP controls.",
+      "Human approvals, agent-to-agent delegation, anomaly detection and tamper-evident audit chain.",
+      "Fail-closed production auth, rate limiting, OPA policy parity and durable PostgreSQL persistence."
+    ],
+    "stack": "Python \u00b7 FastAPI \u00b7 Next.js \u00b7 PostgreSQL/Supabase \u00b7 OPA/Rego \u00b7 Docker \u00b7 Pytest",
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/hemanthkumar1012/agentguard"
+      }
+    ]
+  },
+  {
+    "num": "07",
+    "title": "SevaSetu",
+    "status": "Citizen Action Intelligence \u2014 BHARAT AGENTIC 2026",
+    "desc": [
+      "Turns citizen natural-language questions into evidence-backed public-service action plans.",
+      "Agentic tools for eligibility, document checklists, official sources and ordered next steps.",
+      "Demo and live modes with Gemini; Case Room, Decision Ledger and Agent Trace for inspectability.",
+      "Never invents eligibility; surfaces official portals and trusted government domains."
+    ],
+    "stack": "Next.js \u00b7 TypeScript \u00b7 Gemini \u00b7 Supabase \u00b7 Vercel",
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/hemanthkumar1012/sevasetu-bharat-agentic-2026"
+      }
+    ]
+  },
+  {
+    "num": "08",
+    "title": "Verity Enterprise Agent",
+    "status": "Enterprise multimodal research & action agent",
+    "desc": [
+      "Hybrid retrieval, multimodal document ingestion and agentic research workflows.",
+      "MCP tool integration, SQL tools with safety controls and human-in-the-loop approvals.",
+      "Source-level citations, evaluation datasets, regression tests and auditability.",
+      "Containerized FastAPI backend with browser research workspace."
+    ],
+    "stack": "Python \u00b7 FastAPI \u00b7 React \u00b7 PostgreSQL \u00b7 Docker \u00b7 Evals",
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/hemanthkumar1012/verity-enterprise-agent"
+      }
+    ]
+  },
+  {
+    "num": "09",
+    "title": "Kinder Garden Schools OS",
+    "status": "Multi-tenant school management platform",
+    "desc": [
+      "Admissions, classes, gallery, feedback, webinars and fee management for pre-schools.",
+      "School registration with unique subdomain and public school experience pages.",
+      "JWT auth, dashboard, settings and capacity-aware class management.",
+      "Parent feedback approval and webinar registration flows."
+    ],
+    "stack": "Next.js \u00b7 Express \u00b7 MongoDB \u00b7 Mongoose \u00b7 JWT \u00b7 Tailwind CSS",
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/hemanthkumar1012/kinder-garden-schools-os"
+      }
+    ]
+  },
+  {
+    "num": "10",
+    "title": "Company Intranet Portal",
+    "status": "Multi-tenant employee & attendance system",
+    "desc": [
+      "Company registration, admin/employee login, attendance check-in/out and leave workflows.",
+      "WhatsApp webhook attendance, biometric device sync and payslip PDF generation.",
+      "Policy AI assistant with company-scoped search.",
+      "Multi-tenant filtering and JWT authentication."
+    ],
+    "stack": "Next.js \u00b7 Express \u00b7 MongoDB \u00b7 JWT \u00b7 WhatsApp integration",
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/hemanthkumar1012/company-intranet-portal"
+      }
+    ]
+  },
+  {
+    "num": "11",
+    "title": "Support CRM System",
+    "status": "Full-stack customer support ticketing",
+    "desc": [
+      "Create, search, filter and resolve support tickets with priority levels.",
+      "Internal notes, status workflow (Open / In Progress / Closed) and dashboard stats.",
+      "React + Tailwind frontend served by Express production server.",
+      "Deployed as a single Render web service with SQLite."
+    ],
+    "stack": "React \u00b7 Vite \u00b7 Tailwind \u00b7 Node.js \u00b7 Express \u00b7 SQLite \u00b7 Render",
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/hemanthkumar1012/crm-system"
+      }
+    ]
+  },
+  {
+    "num": "12",
+    "title": "Aegis",
+    "status": "AI-powered runtime security & authorization plane",
+    "desc": [
+      "Gateway between automated workloads/agents and tools with RBAC, ABAC and risk scoring.",
+      "IsolationForest anomaly detection, human approval gates and full audit provenance.",
+      "Tool registry, credential lifecycle and Redis-backed rate limiting.",
+      "FastAPI + React dashboard with Docker Compose (Postgres + Redis)."
+    ],
+    "stack": "Python \u00b7 FastAPI \u00b7 React \u00b7 PostgreSQL \u00b7 Redis \u00b7 Docker \u00b7 Pytest",
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/hemanthkumar1012/aegis"
+      }
+    ]
+  },
+  {
+    "num": "13",
+    "title": "Personal Portfolio Website",
+    "status": "Live \u2014 you're on it right now",
+    "desc": [
+      "Editorial portfolio with integrated portrait and premium responsive layout.",
+      "Interactive 3D scene with particles, rings and geometric depth.",
+      "Mouse parallax, floating UI cards and smooth scroll reveals.",
+      "Spiderman-themed dark red/blue cinematic design with web accents."
+    ],
+    "stack": "HTML5 \u00b7 CSS3 \u00b7 JavaScript \u00b7 Three.js \u00b7 GitHub Pages",
+    "links": [
+      {
+        "label": "Live",
+        "url": "https://hemanthkumar1012.github.io/Hemanth-kumar-portfolio/"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/hemanthkumar1012/Hemanth-kumar-portfolio"
+      }
+    ]
+  }
+]
