@@ -1,0 +1,11 @@
+{
+  "name": "Hemanth Kumar Portfolio",
+  "short_name": "Hemanth",
+  "description": "AI Product Builder & Full-Stack Engineer portfolio",
+  "start_url": "/Hemanth-kumar-portfolio/",
+  "display": "standalone",
+  "background_color": "#f4f4ec",
+  "theme_color": "#173d2c",
+  "lang": "en",
+  "icons": []
+}
