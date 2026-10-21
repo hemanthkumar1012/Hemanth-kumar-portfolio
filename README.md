@@ -14,6 +14,7 @@ A premium, editorial-style portfolio showcasing AI products, full-stack applicat
 - SEO meta tags, Open Graph, and Twitter cards
 - Accessible focus states and reduced-motion friendly animations
 - GitHub Pages deployment with `.nojekyll`
+- Full documentation suite under `/docs`
 
 ## Tech
 
@@ -25,6 +26,10 @@ A premium, editorial-style portfolio showcasing AI products, full-stack applicat
 ## Projects highlighted
 
 ApplyRight · ParcelPilot AI · LLM Evaluation Lab · AgentGuard · SevaSetu · Cricket Tournament System · and more.
+
+## Documentation
+
+See [docs/INDEX.md](docs/INDEX.md) for architecture, accessibility, performance, SEO, roadmap and more.
 
 ## Local development
 
