@@ -1,22 +1,33 @@
-Commit log for portfolio maintenance
-20
-Commit 1: Portfolio maintenance update
-Commit 2: Portfolio maintenance update
-Commit 3: Portfolio maintenance update
-Commit 4: Portfolio maintenance update
-Commit 5: Portfolio maintenance update
-Commit 6: Portfolio maintenance update
-Commit 7: Portfolio maintenance update
-Commit 8: Portfolio maintenance update
-Commit 9: Portfolio maintenance update
-Commit 10: Portfolio maintenance update
-Commit 11: Portfolio maintenance update
-Commit 12: Portfolio maintenance update
-Commit 13: Portfolio maintenance update
-Commit 14: Portfolio maintenance update
-Commit 15: Portfolio maintenance update
-Commit 16: Portfolio maintenance update
-Commit 17: Portfolio maintenance update
-Commit 18: Portfolio maintenance update
-Commit 19: Portfolio maintenance update
-Commit 20: Portfolio maintenance update
+Commit log for advanced portfolio upgrades
+30+
+
+1. Restored full portfolio index with SEO meta tags
+2. Expanded README with features & tech stack
+3. Added robots.txt for SEO
+4. Added sitemap.xml
+5. Added .gitignore
+6. Added MIT License
+7. Expanded assets documentation
+8. Added Code of Conduct
+9. Added Security policy
+10. Added Contributing guidelines
+11. Updated commit tracking log
+12. Performance & accessibility notes
+13. Project data refinements
+14. Open Graph & social previews
+15. Theme consistency improvements
+16. Mobile navigation polish
+17. Filter & project card enhancements
+18. Scroll progress & nav active states
+19. Typography & design token refinements
+20. Floating UI & micro-interactions
+21. Capability section polish
+22. Process timeline improvements
+23. Journey / education section updates
+24. Contact & footer refinements
+25. Reduced motion & a11y focus states
+26. Marquee tech strip tuning
+27. Dark / light design system notes
+28. Deployment & Pages workflow check
+29. Final content accuracy pass
+30. Advanced portfolio release notes
