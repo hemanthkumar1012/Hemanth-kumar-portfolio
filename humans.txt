@@ -1,0 +1,13 @@
+/* TEAM */
+Creator: Hemanth Kumar
+Site: https://hemanthkumar1012.github.io/Hemanth-kumar-portfolio/
+GitHub: https://github.com/hemanthkumar1012
+Location: India
+
+/* THANKS */
+Fonts: Google Fonts (Space Grotesk, Manrope, DM Mono)
+Hosting: GitHub Pages
+
+/* SITE */
+Standards: HTML5, CSS3, ES6+
+Components: Vanilla JS
