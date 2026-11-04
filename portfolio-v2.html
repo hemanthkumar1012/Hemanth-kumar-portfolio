@@ -794,6 +794,58 @@ footer{background:#060914}
   .project,.btn,.cap-card,.process-card,.timeline-item{transition:none!important}
 }
 
+
+/* ===== Education & certifications (aligned rebuild) ===== */
+#journey .journey-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr);gap:clamp(36px,6vw,88px);align-items:start}
+.journey-intro{position:sticky;top:110px}
+.edu-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:28px}
+.edu-stat{border:1px solid #2b4162;background:#0c1729;border-radius:3px;padding:14px 12px}
+.edu-stat b{display:block;font:700 1.45rem/1 "Space Grotesk",sans-serif;color:#f5f7ff;letter-spacing:-.02em}
+.edu-stat span{display:block;margin-top:7px;font:500 .55rem/1.3 "DM Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:#90bfff}
+.edu-rail{position:relative;display:grid;gap:16px;padding-left:34px}
+.edu-rail:before{content:"";position:absolute;left:9px;top:10px;bottom:10px;width:2px;background:linear-gradient(180deg,#ff3150,#398dff 55%,#283d5d)}
+.edu-card{position:relative;display:grid;grid-template-columns:150px minmax(0,1fr) 136px;align-items:stretch;border:1px solid #2b4162;background:linear-gradient(140deg,#101c31,#0a1322);border-radius:3px;transition:border-color .25s,transform .25s,box-shadow .25s}
+.edu-card:hover{border-color:#4a6ea3;transform:translateX(4px);box-shadow:-4px 4px 0 #398dff33}
+.edu-node{position:absolute;left:-31px;top:26px;width:14px;height:14px;border-radius:50%;background:#ff3150;border:3px solid #080d19;box-shadow:0 0 0 1px #ff526b,0 0 16px #ff31507a}
+.edu-card.is-past .edu-node{background:#398dff;box-shadow:0 0 0 1px #5aa2ff,0 0 14px #398dff55}
+.edu-when{padding:22px 18px;border-right:1px solid #22385a;display:flex;flex-direction:column;gap:6px}
+.edu-when b{white-space:nowrap;font:600 .74rem "DM Mono",monospace;color:#f0f5ff;letter-spacing:.02em}
+.edu-when span{font:500 .55rem "DM Mono",monospace;color:#809abd;letter-spacing:.1em;text-transform:uppercase}
+.edu-status{white-space:nowrap;align-self:flex-start;margin-top:6px;padding:4px 7px;border-radius:2px;font:500 .52rem "DM Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:#ff8496;background:#ff31501a;border:1px solid #ff315055}
+.edu-card.is-past .edu-status{color:#8fc9ff;background:#398dff14;border-color:#398dff44}
+.edu-main{padding:22px 22px;min-width:0}
+.edu-kicker{font:500 .57rem "DM Mono",monospace;color:#90bfff;letter-spacing:.11em;text-transform:uppercase}
+.edu-main h3{margin:8px 0 6px;font:600 clamp(1.05rem,1.6vw,1.3rem)/1.2 "Space Grotesk",sans-serif;color:#f5f7ff;letter-spacing:-.01em}
+.edu-main p{margin:0;color:#a8b5cf;font-size:.86rem;line-height:1.55}
+.edu-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.edu-tags span{font:500 .54rem "DM Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:#c9d6ee;border:1px solid #2f4669;background:#0e1a2e;padding:5px 7px;border-radius:2px}
+.edu-metric{border-left:1px solid #22385a;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:18px 12px;background:#0b1526}
+.edu-metric b{font:700 1.9rem/1 "Space Grotesk",sans-serif;color:#fff;letter-spacing:-.03em}
+.edu-metric b small{font-size:.8rem;color:#809abd;font-weight:500;margin-left:2px}
+.edu-metric span{margin-top:8px;font:500 .54rem "DM Mono",monospace;letter-spacing:.11em;text-transform:uppercase;color:#90bfff}
+.edu-meter{width:100%;max-width:92px;height:4px;background:#1b2c47;border-radius:2px;margin-top:12px;overflow:hidden}
+.edu-meter i{display:block;height:100%;background:linear-gradient(90deg,#ff3150,#398dff)}
+/* certifications */
+#certifications .cert-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}#certifications .cert-card:nth-child(-n+3){grid-column:span 2}#certifications .cert-card:nth-child(n+4){grid-column:span 3}@media (max-width:1000px){#certifications .cert-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#certifications .cert-card:nth-child(n){grid-column:auto}#certifications .cert-card:last-child{grid-column:1/-1}}@media (max-width:640px){#certifications .cert-grid{grid-template-columns:1fr}}
+#certifications .cert-card{display:grid;grid-template-columns:48px minmax(0,1fr);align-items:center;gap:16px;padding:20px;min-height:104px}
+#certifications .cert-card h3{margin:0 0 6px;font:600 1rem/1.3 "Space Grotesk",sans-serif}
+#certifications .cert-card p{margin:0;font:500 .58rem "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:#90bfff}
+#certifications .cert-mark{width:48px;height:48px;min-width:48px}
+@media (max-width:900px){
+ #journey .journey-grid{grid-template-columns:1fr}
+ .journey-intro{position:static}
+}
+@media (max-width:640px){
+ .edu-rail{padding-left:24px}
+ .edu-rail:before{left:5px}
+ .edu-node{left:-25px;top:22px}
+ .edu-card{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"when metric" "main main"}
+ .edu-when{grid-area:when;border-right:0;border-bottom:1px solid #22385a;padding:16px}
+ .edu-metric{grid-area:metric;border-left:0;border-bottom:1px solid #22385a;padding:14px 16px;min-width:104px}
+ .edu-main{grid-area:main;padding:18px 16px}
+ .edu-metric b{font-size:1.5rem}
+ .edu-stat b{font-size:1.15rem}
+}
 </style>
 </head>
 <body>
@@ -948,11 +1000,26 @@ footer{background:#060914}
 
 <section class="section" id="journey">
   <div class="wrap journey-grid">
-    <div class="journey-intro reveal"><div class="section-id"><b>04</b> THE JOURNEY</div><h2 class="section-title">Learning<br>in public.</h2><p>I’m growing from an engineering foundation into software and AI product development through coursework, internships, and hands-on projects.</p></div>
-    <div class="timeline reveal">
-      <article class="timeline-item"><span class="timeline-dot"></span><div><div class="timeline-label">Current · Expected 2027</div><h3>B.Tech, Computer Science Engineering</h3><p>Sri Venkateswara University College of Engineering · Andhra Pradesh, India · CGPA 7.5/10</p></div><span class="timeline-date">2024 — 2027</span></article>
-      <article class="timeline-item"><span class="timeline-dot"></span><div><div class="timeline-label">Engineering foundation</div><h3>Diploma, Electrical & Electronics Engineering</h3><p>Sri Venkateswara Government Polytechnic, Tirupati · 73.39%</p></div><span class="timeline-date">2021 — 2024</span></article>
-      <article class="timeline-item"><span class="timeline-dot"></span><div><div class="timeline-label">Industry exposure</div><h3>Maintenance Internship</h3><p>Tirumala Milk Products Pvt. Ltd. · On-site experience in the maintenance section</p></div><span class="timeline-date">6 MONTHS</span></article>
+    <div class="journey-intro reveal"><div class="section-id"><b>04</b> THE JOURNEY</div><h2 class="section-title">Learning<br>in public.</h2><p>I’m growing from an engineering foundation into software and AI product development through coursework, internships, and hands-on projects.</p><div class="edu-stats"><div class="edu-stat"><b>7.5</b><span>B.Tech CGPA</span></div><div class="edu-stat"><b>73.39%</b><span>Diploma</span></div><div class="edu-stat"><b>2027</b><span>Graduating</span></div></div></div>
+    <div class="edu-rail reveal">
+      <article class="edu-card">
+        <span class="edu-node" aria-hidden="true"></span>
+        <div class="edu-when"><b>2024 — 2027</b><span>Undergraduate</span><span class="edu-status">In progress</span></div>
+        <div class="edu-main"><div class="edu-kicker">Bachelor of Technology</div><h3>Computer Science &amp; Engineering</h3><p>Sri Venkateswara University College of Engineering · Tirupati, Andhra Pradesh</p><div class="edu-tags"><span>Software engineering</span><span>Applied AI projects</span><span>Full-stack systems</span></div></div>
+        <div class="edu-metric"><b>7.5<small>/10</small></b><span>CGPA</span><div class="edu-meter"><i style="width:75%"></i></div></div>
+      </article>
+      <article class="edu-card is-past">
+        <span class="edu-node" aria-hidden="true"></span>
+        <div class="edu-when"><b>2021 — 2024</b><span>Diploma</span><span class="edu-status">Completed</span></div>
+        <div class="edu-main"><div class="edu-kicker">Diploma in Engineering</div><h3>Electrical &amp; Electronics Engineering</h3><p>Sri Venkateswara Government Polytechnic · Tirupati, Andhra Pradesh</p><div class="edu-tags"><span>Electrical systems</span><span>Electronics</span><span>Engineering foundation</span></div></div>
+        <div class="edu-metric"><b>73.39<small>%</small></b><span>Aggregate</span><div class="edu-meter"><i style="width:73.39%"></i></div></div>
+      </article>
+      <article class="edu-card is-past">
+        <span class="edu-node" aria-hidden="true"></span>
+        <div class="edu-when"><b>Jun — Nov 2023</b><span>Industrial training</span><span class="edu-status">Completed</span></div>
+        <div class="edu-main"><div class="edu-kicker">Industrial Trainee</div><h3>Electrical Maintenance Section</h3><p>Tirumala Milk Products Pvt. Ltd. · On-site training in plant electrical maintenance</p><div class="edu-tags"><span>On-site</span><span>Plant operations</span><span>Maintenance</span></div></div>
+        <div class="edu-metric"><b>6</b><span>Months</span></div>
+      </article>
     </div>
   </div>
 </section>
@@ -968,7 +1035,7 @@ footer{background:#060914}
       <article class="cert-card reveal"><span class="cert-mark">D</span><div><h3>Data Analytics Job Simulation</h3><p>Deloitte · Forage · 2026</p></div></article>
       <article class="cert-card reveal"><span class="cert-mark">NW</span><div><h3>CCBP 4.0 — Full Stack Development Program</h3><p>NXTWave · Expected 2027</p></div></article>
     </div>
-    <div class="education-mini reveal"><strong>Sri Venkateswara University College of Engineering · B.Tech CSE</strong><span>2024 — 2027 · CGPA 7.5/10</span></div>
+    
   </div>
 </section>
 
