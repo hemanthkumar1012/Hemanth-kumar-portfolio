@@ -1,0 +1,17 @@
+{
+  "name": "market-pulse",
+  "version": "1.0.0",
+  "description": "Market breadth, sector rotation and relative strength dashboard (vanilla ES modules, hand-written SVG charts).",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "python3 -m http.server 5173",
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "V. Hemanth Kumar",
+  "license": "MIT"
+}
