@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Market breadth, sector rotation and relative strength dashboard for Indian equities.">
+  <title>Market Pulse — Breadth, Rotation &amp; Relative Strength</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="src/styles/base.css">
+  <link rel="stylesheet" href="src/styles/components.css">
+  <link rel="stylesheet" href="src/styles/charts.css">
+</head>
+<body>
+  <div class="sk" id="sk"><div class="lg"><i></i>Market Pulse</div><div class="bar"></div></div>
+  <div id="prog"></div>
+
+  <header>
+    <div class="logo"><i></i>Market Pulse</div>
+    <nav class="mn">
+      <div class="mi">
+        <button>Products</button>
+        <div class="dd">
+          <a data-go="rot"><i>◧</i><div>Rotation Dashboard<small>Sector ranking, score and state</small></div></a>
+          <a data-go="tm"><i>▦</i><div>Market Map<small>Every stock by size and return</small></div></a>
+          <a data-go="btc"><i>⟲</i><div>Backtester<small>Test a sector rotation strategy</small></div></a>
+          <a data-go="sweepCard"><i>▤</i><div>Parameter Sweep<small>Sharpe across every setting</small></div></a>
+          <a data-go="cmp"><i>≋</i><div>Compare<small>Stocks side by side, rebased</small></div></a>
+          <a data-go="tbl"><i>☰</i><div>RS Screener<small>Rank stocks by relative strength</small></div></a>
+        </div>
+      </div>
+      <div class="mi">
+        <button>Markets</button>
+        <div class="dd">
+          <div class="hd">India</div>
+          <a data-go="breadth"><i>↗</i><div>Breadth<small>% above 50/200-DMA, A/D line</small></div></a>
+          <a data-go="rrg"><i>◎</i><div>Sector Rotation (RRG)<small>Leading, weakening, lagging, improving</small></div></a>
+          <a data-go="corr"><i>▥</i><div>Correlation<small>How sectors move together</small></div></a>
+        </div>
+      </div>
+      <div class="mi">
+        <button>Tools</button>
+        <div class="dd">
+          <a data-action="palette"><i>⌕</i><div>Quick search<small>Jump to any stock · ⌘K</small></div></a>
+          <a data-action="live"><i>●</i><div>Live mode<small>Simulated real-time ticks</small></div></a>
+          <div class="hd">About</div>
+          <a data-go="about"><i>ⓘ</i><div>How this was built<small>Design decisions &amp; data note</small></div></a>
+        </div>
+      </div>
+    </nav>
+    <div class="tape"><div id="tape"></div></div>
+    <div class="ctrl">
+      <div class="seg" id="tf">
+        <button data-d="21">1M</button>
+        <button data-d="63" class="on">3M</button>
+        <button data-d="126">6M</button>
+        <button data-d="252">1Y</button>
+      </div>
+      <button class="btn" id="palBtn">Search <span class="kbd">⌘K</span></button>
+      <button class="btn" id="share" title="Copy a link to this exact view">Share</button>
+      <button class="btn live" id="live"><i></i>Live</button>
+      <button class="btn" id="theme" title="Toggle theme">◐</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1>Market Pulse</h1>
+        <p>Breadth, sector rotation and relative strength for the Indian market — one page that answers what's moving, where money is rotating, and which stocks lead.</p>
+      </div>
+      <div class="chips">
+        <span class="chip"><i></i><b>Live-ready</b> simulated feed</span>
+        <span class="chip" id="statsLine"></span>
+        <span class="chip"><b>0</b> runtime dependencies</span>
+        <span class="chip">Press <span class="kbd">⌘K</span></span>
+        <a class="chip chip-link" href="case-study/"><b>Read the case study →</b></a>
+      </div>
+    </section>
+
+    <div class="q">Which sectors lead right now?</div>
+    <div class="card" id="rot">
+      <h3>Sector Rotation Dashboard <small><button class="btn btn-xs" id="rkTog">Hide table</button></small></h3>
+      <div class="sub">Sectors ranked by a composite of relative strength, momentum, trend and relative volume versus NIFTY 500. Row colour = state. Click a row to open the sector.</div>
+      <div class="rc">
+        <div class="meta" id="rcMeta"></div>
+        <svg id="rcSvg" width="100%" height="430"></svg>
+        <div class="tw2"><table class="rk-t" id="rkT"></table></div>
+      </div>
+    </div>
+
+    <div class="q">What is the market doing today?</div>
+    <div class="grid kpis" id="kpis"></div>
+
+    <div class="q">Where is the money flowing?</div>
+    <div class="card">
+      <h3>Market Map <small>tile size = market cap · colour = period return · click to drill down</small></h3>
+      <div class="tm" id="tm"></div>
+    </div>
+    <div class="grid row4 gap-top">
+      <div class="card">
+        <h3>Market Regime <small>composite of 5 breadth &amp; trend signals</small></h3>
+        <div class="regime">
+          <svg id="gauge" viewBox="0 0 220 165" width="220"></svg>
+          <div class="comp" id="comp"></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Sector Correlation <small id="corrTag"></small></h3>
+        <div class="sub">Pearson correlation of daily sector returns, shaded from lowest (dark) to highest (light) in the window. Low correlation = real diversification.</div>
+        <svg id="corr" width="100%" height="300"></svg>
+      </div>
+    </div>
+
+    <div class="q">Is the rally broad or narrow?</div>
+    <div class="grid row2">
+      <div class="card">
+        <h3>Index vs. Market Breadth <small id="brTag"></small></h3>
+        <div class="sub">NIFTY 500 against % of stocks above their 50-DMA and 200-DMA. Divergence between price and breadth is an early warning.</div>
+        <svg id="breadth" width="100%" height="380"></svg>
+        <div class="legend"><span style="--c:var(--txt)">Index (rebased)</span><span style="--c:var(--acc)">% &gt; 50-DMA</span><span style="--c:var(--vio)">% &gt; 200-DMA</span><span style="--c:var(--loss)">Divergence zone</span></div>
+      </div>
+      <div class="card">
+        <h3>Advance / Decline <small>daily</small></h3>
+        <div class="sub">Net advancers per session and cumulative A/D line.</div>
+        <svg id="ad" width="100%" height="200"></svg>
+        <h3 class="gap-top">Today's read</h3>
+        <div class="insight" id="insights"></div>
+      </div>
+    </div>
+
+    <div class="q">Which sectors are rotating in and out?</div>
+    <div class="grid row3">
+      <div class="card">
+        <h3>Relative Rotation Graph <small>vs NIFTY 500 · trail 8 wks</small></h3>
+        <div class="sub">RS-Ratio (trend) × RS-Momentum (rate of change). Sectors rotate clockwise: Improving → Leading → Weakening → Lagging. Click a sector to filter the screener.</div>
+        <svg id="rrg" width="100%" height="400"></svg>
+      </div>
+      <div class="card">
+        <h3>Sector Heatmap <small id="hmTag">return over period</small></h3>
+        <div class="sub">Coloured on a diverging scale. Click for drill-down.</div>
+        <div class="heat" id="heat"></div>
+        <h3 class="gap-top">Sector returns ranked</h3>
+        <svg id="secbars" width="100%" height="250"></svg>
+      </div>
+    </div>
+
+    <div class="q">Would a rotation strategy have worked?</div>
+    <div class="card" id="btc">
+      <h3>Sector Rotation Backtester <small id="btTag"></small></h3>
+      <div class="sub">Each rebalance, hold the top-N sectors by excess return over the lookback window (equal weight, costs on turnover, no look-ahead). Compared with NIFTY 500 and an equal-weight basket of all sectors.</div>
+      <div class="bt">
+        <div class="prm">
+          <div><label for="pL">Lookback window <b id="vL"></b></label><input type="range" id="pL" min="10" max="126" step="1" value="63"></div>
+          <div><label for="pN">Sectors held (top N) <b id="vN"></b></label><input type="range" id="pN" min="1" max="6" step="1" value="3"></div>
+          <div><label for="pR">Rebalance every <b id="vR"></b></label><input type="range" id="pR" min="5" max="63" step="1" value="21"></div>
+          <div><label for="pC">Cost per trade <b id="vC"></b></label><input type="range" id="pC" min="0" max="50" step="1" value="10"></div>
+          <div class="mets" id="mets"></div>
+          <div><div class="m small-label">Current holdings</div><div class="hold" id="hold"></div></div>
+        </div>
+        <div>
+          <svg id="btEq" width="100%" height="260"></svg>
+          <svg id="btDd" width="100%" height="90"></svg>
+          <div class="legend"><span style="--c:var(--txt)">Strategy</span><span style="--c:#777">NIFTY 500</span><span style="--c:#444">Equal-weight sectors</span><span style="--c:var(--loss)">Strategy drawdown</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card gap-top" id="sweepCard">
+      <h3>Parameter Sweep <small id="sweepTag"></small></h3>
+      <div class="sub">Sharpe ratio for every lookback × top-N pair at the current rebalance and cost settings. Click a cell to load it into the backtester. The brightest cell is the best fit to <em>this</em> history — treat it as a hint, not a strategy (overfitting).</div>
+      <div class="sweep" id="sweep"></div>
+    </div>
+
+    <div class="q">How do these stocks compare?</div>
+    <div class="card" id="cmp">
+      <h3>Compare <small>rebased to 100 · add stocks from any drill-down (max 5)</small></h3>
+      <div class="cmpc" id="cmpChips"></div>
+      <svg id="cmpSvg" width="100%" height="280"></svg>
+    </div>
+
+    <div class="q">How strong is this stock vs. the market?</div>
+    <div class="card">
+      <h3>Relative Strength Screener <small id="cnt"></small></h3>
+      <div class="sub">RS Rank = percentile of weighted 3/6/9/12M return vs. the universe (40/20/20/20). Click any row for the stock drill-down.</div>
+      <div class="tools">
+        <input id="search" placeholder="Smart search — try: realty leading rs>80 near high" autocomplete="off">
+        <select id="fSec"><option value="">All sectors</option></select>
+        <select id="fQ">
+          <option value="">All quadrants</option>
+          <option>Leading</option><option>Improving</option><option>Weakening</option><option>Lagging</option>
+        </select>
+        <select id="fRS">
+          <option value="0">Any RS</option><option value="80">RS ≥ 80</option><option value="90">RS ≥ 90</option>
+        </select>
+        <select id="fW"><option value="">All stocks</option><option value="w">★ Watchlist</option></select>
+        <button class="btn" id="csv">Export CSV</button>
+      </div>
+      <div class="qtag" id="qtag"></div>
+      <div class="help">
+        <span><span class="kbd">j</span>/<span class="kbd">k</span> move</span>
+        <span><span class="kbd">↵</span> open</span>
+        <span><span class="kbd">w</span> watchlist</span>
+        <span><span class="kbd">1</span>–<span class="kbd">4</span> timeframe</span>
+        <span><span class="kbd">/</span> search</span>
+        <span><span class="kbd">Esc</span> close</span>
+      </div>
+      <div class="tw gap-top-sm"><table id="tbl"><thead></thead><tbody></tbody></table></div>
+    </div>
+
+    <div class="note" id="about">
+      <b>About this sample.</b> A design and engineering study for breadth, sector-rotation and relative-strength screens. All market data is <b>simulated</b> from a seeded random walk so the page runs on its own; the metrics, structure and interactions mirror a production analytics view.
+      <br><b>Design decisions:</b> screens grouped by the question a trader asks · key numbers first, detail one click away · one diverging gain/loss scale everywhere · tabular numerals · every chart has tooltips · URL holds the full view state · works in dark/light and on mobile. Hand-written SVG charts in vanilla ES modules, no runtime dependencies.
+    </div>
+  </main>
+
+  <div class="drawer" id="drawer"><button class="btn x" id="dx" aria-label="Close">✕</button><div id="dbody"></div></div>
+  <div class="tip" id="tip"></div>
+  <div class="toasts" id="toasts"></div>
+  <footer class="sb">
+    <span><span class="gd"></span>NSE · Simulated session</span>
+    <span id="sbClock"></span>
+    <span id="sbUpd">Last update —</span>
+    <span class="r">Market Pulse · V. Hemanth Kumar</span>
+  </footer>
+  <div class="pal" id="pal"><div><input id="palIn" placeholder="Jump to a stock or sector…" autocomplete="off"><ul id="palList"></ul></div></div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
